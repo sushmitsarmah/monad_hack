@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: monad_hindex1
+networks:
+- id: 1
+  start_block: 0
+  contracts:
+  - name: L1ChugSplashProxy
+    address:
+    - 0x99C9fc46f92E8a1c0deC1b1747d010903E884bE1
+    handler: ./src/EventHandlers.js
+    events:
+    - event: ERC20BridgeFinalized(address indexed localToken, address indexed remoteToken, address indexed from, address to, uint256 amount, bytes extraData)
+    - event: ERC20BridgeInitiated(address indexed localToken, address indexed remoteToken, address indexed from, address to, uint256 amount, bytes extraData)
+    - event: ERC20DepositInitiated(address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 amount, bytes extraData)
+    - event: ERC20WithdrawalFinalized(address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 amount, bytes extraData)
+    - event: ETHBridgeFinalized(address indexed from, address indexed to, uint256 amount, bytes extraData)
+    - event: ETHBridgeInitiated(address indexed from, address indexed to, uint256 amount, bytes extraData)
+    - event: ETHDepositInitiated(address indexed from, address indexed to, uint256 amount, bytes extraData)
+    - event: ETHWithdrawalFinalized(address indexed from, address indexed to, uint256 amount, bytes extraData)
+    - event: Initialized(uint8 version)
+- id: 10
+  start_block: 0
+  contracts:
+  - name: Proxy
+    address:
+    - 0x4200000000000000000000000000000000000010
+    handler: ./src/EventHandlers.js
+    events:
+    - event: AdminChanged(address previousAdmin, address newAdmin)
+    - event: DepositFinalized(address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 amount, bytes extraData)
+    - event: ERC20BridgeFinalized(address indexed localToken, address indexed remoteToken, address indexed from, address to, uint256 amount, bytes extraData)
+    - event: ERC20BridgeInitiated(address indexed localToken, address indexed remoteToken, address indexed from, address to, uint256 amount, bytes extraData)
+    - event: ETHBridgeFinalized(address indexed from, address indexed to, uint256 amount, bytes extraData)
+    - event: ETHBridgeInitiated(address indexed from, address indexed to, uint256 amount, bytes extraData)
+    - event: Upgraded(address indexed implementation)
+    - event: WithdrawalInitiated(address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 amount, bytes extraData)

@@ -1,12 +1,14 @@
 import express from 'express';
 import get_volumes from './get_volumes';
 import wallet_tracker from './wallet_tracker';
+import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 4000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+app.use(cors());
 
 // Types
 interface VolumeResponse {

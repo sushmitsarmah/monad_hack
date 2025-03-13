@@ -1,0 +1,144 @@
+type L1ChugSplashProxy_ERC20BridgeFinalized {
+  id: ID!
+  localToken: String!
+  remoteToken: String!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type L1ChugSplashProxy_ERC20BridgeInitiated {
+  id: ID!
+  localToken: String!
+  remoteToken: String!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type L1ChugSplashProxy_ERC20DepositInitiated {
+  id: ID!
+  l1Token: String!
+  l2Token: String!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type L1ChugSplashProxy_ERC20WithdrawalFinalized {
+  id: ID!
+  l1Token: String!
+  l2Token: String!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type L1ChugSplashProxy_ETHBridgeFinalized {
+  id: ID!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type L1ChugSplashProxy_ETHBridgeInitiated {
+  id: ID!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type L1ChugSplashProxy_ETHDepositInitiated {
+  id: ID!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type L1ChugSplashProxy_ETHWithdrawalFinalized {
+  id: ID!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type L1ChugSplashProxy_Initialized {
+  id: ID!
+  version: BigInt!
+}
+
+type Proxy_AdminChanged {
+  id: ID!
+  previousAdmin: String!
+  newAdmin: String!
+}
+
+type Proxy_DepositFinalized {
+  id: ID!
+  l1Token: String!
+  l2Token: String!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type Proxy_ERC20BridgeFinalized {
+  id: ID!
+  localToken: String!
+  remoteToken: String!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type Proxy_ERC20BridgeInitiated {
+  id: ID!
+  localToken: String!
+  remoteToken: String!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type Proxy_ETHBridgeFinalized {
+  id: ID!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type Proxy_ETHBridgeInitiated {
+  id: ID!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
+type Proxy_Upgraded {
+  id: ID!
+  implementation: String!
+}
+
+type Proxy_WithdrawalInitiated {
+  id: ID!
+  l1Token: String!
+  l2Token: String!
+  from: String!
+  to: String!
+  amount: BigInt!
+  extraData: String!
+}
+
