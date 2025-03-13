@@ -1,7 +1,8 @@
 // const HSYNC_API_URL = 'http://localhost:4000/api'
-const HSYNC_API_URL = 'https://monad-hack.onrender.com/api'
 // const HINDEX_GRAPHQL_URL = 'http://localhost:8080/v1/graphql'
-const HINDEX_GRAPHQL_URL = 'https://indexer.dev.hyperindex.xyz/892dd7a/v1/graphql'
+
+const HSYNC_API_URL = 'https://monad-hack.onrender.com/api'
+const HINDEX_GRAPHQL_URL = 'https://indexer.dev.hyperindex.xyz/fe857ff/v1/graphql'
 
 export const getWalletTransactions = async (address: string) => {
   const response = await fetch(`${HSYNC_API_URL}/wallet-txns`, {
