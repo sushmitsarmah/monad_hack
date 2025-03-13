@@ -68,7 +68,7 @@ export const getTokenApprovals = async (limit = 50) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-hasura-admin-secret': 'testing',
+      // 'x-hasura-admin-secret': 'testing',
     },
     body: JSON.stringify({ query }),
   })
@@ -114,7 +114,7 @@ export const getTokenTransfers = async (limit = 50) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-hasura-admin-secret': 'testing',
+      // 'x-hasura-admin-secret': 'testing',
     },
     body: JSON.stringify({ query }),
   })
