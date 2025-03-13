@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   BarChart,
   Bar,
@@ -18,7 +18,9 @@ import {
   ZAxis,
 } from 'recharts'
 
-import { HINDEX_DATA } from './sample'
+// import { HINDEX_DATA } from './sample'
+
+import { getTokenApprovals } from '@/services'
 
 // Define types for the data structure
 interface TokenApproval {
@@ -64,29 +66,37 @@ interface OwnerDataItem {
 }
 
 const TokenApprovalsDashboard: React.FC = () => {
-  const [data, setData] = useState<DataStructure>(HINDEX_DATA)
+  const [data, setData] = useState<DataStructure>()
+
+  useEffect(() => {
+    getTokenApprovals(10).then((data) => {
+      setData(data)
+    })
+  }, [])
 
   // Process data for token distribution chart
-  const tokenDistribution: TokenDistributionItem[] = Object.keys(data.data).map((token) => {
-    const count = data.data[token].length
-    const totalValue = data.data[token].reduce((sum, item) => {
+  const tokenDistribution: TokenDistributionItem[] = Object.keys(data?.data || {}).map((token) => {
+    const count = data?.data[token].length
+    let totalValue = data?.data[token].reduce((sum, item) => {
       const value = BigInt(item.value)
       // Avoid overflow by using a reasonable upper limit
       const cappedValue = value > BigInt('1000000000000000000000000') ? BigInt('1000000000000000000000000') : value
       return sum + Number(cappedValue) / 1e18 // Convert to ETH equivalent for readability
     }, 0)
 
+    totalValue = totalValue || 0
+
     return {
       name: token.replace('TokenMintERC20Token_Approval', ''),
       count: count,
       totalValue: parseFloat(totalValue.toFixed(2)),
-    }
+    } as any
   })
 
   // Process data for popular spenders
   const allSpenders: SpenderItem[] = []
-  Object.keys(data.data).forEach((token) => {
-    data.data[token].forEach((approval) => {
+  Object.keys(data?.data || {}).forEach((token) => {
+    data?.data[token].forEach((approval) => {
       allSpenders.push({
         spender: approval.spender,
         token: token.replace('TokenMintERC20Token_Approval', ''),
@@ -117,8 +127,8 @@ const TokenApprovalsDashboard: React.FC = () => {
 
   // Process data for owner analysis
   const ownerActivity: Record<string, OwnerActivityItem> = {}
-  Object.keys(data.data).forEach((token) => {
-    data.data[token].forEach((approval) => {
+  Object.keys(data?.data || {}).forEach((token) => {
+    data?.data[token].forEach((approval) => {
       if (!ownerActivity[approval.owner]) {
         ownerActivity[approval.owner] = {
           owner: approval.owner,
