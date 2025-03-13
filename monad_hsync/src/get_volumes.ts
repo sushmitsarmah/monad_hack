@@ -1,7 +1,10 @@
 import { HypersyncClient, Decoder } from "@envio-dev/hypersync-client";
 import pkg from "@envio-dev/hypersync-client";
 
-const ENVIO_TOKEN="c4e36f17-8d03-4d88-8d1f-7fc8647e9988"
+const CHAIN_IDS: any = {
+  'monad-testnet': '10143',
+  'eth-mainnet': '1',
+}
 
 // Convert address to topic for filtering. Padds the address with zeroes.
 function addressToTopic(address: string): string {
@@ -22,12 +25,16 @@ function formatTokenValue(value: bigint, decimals: number = 18, isEth: boolean =
   return isEth ? `${formattedNumber} ETH` : formattedNumber;
 }
 
-async function get_volumes(addresses: string[]) {
+async function get_volumes(addresses: string[], network = 'monad-testnet') {
   // Create hypersync client using the mainnet hypersync endpoint
+  const chainId = CHAIN_IDS[network]
+  if (!chainId) {
+    throw new Error(`Network ${network} not supported`)
+  }
+  const url = `https://${CHAIN_IDS[network]}.hypersync.xyz`
   const client = HypersyncClient.new({
-    url: "https://eth.hypersync.xyz",
-    bearerToken: ENVIO_TOKEN,
-  });
+    url,
+  })
 
   const addressTopicFilter = addresses.map(addressToTopic);
 

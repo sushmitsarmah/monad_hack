@@ -23,6 +23,7 @@
     ]
   },
   "dependencies": {
+    "@envio-dev/hypersync-client": "^0.3.3",
     "@heroicons/react": "^2.0.18",
     "@reown/appkit": "^1.6.5",
     "@reown/appkit-adapter-wagmi": "^1.6.5",
@@ -40,7 +41,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "@tsconfig/next": "^2.0.0",
+    "@tsconfig/next": "^2.0.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
