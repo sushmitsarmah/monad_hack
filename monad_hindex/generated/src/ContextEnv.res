@@ -128,17 +128,19 @@ let makeEntityHandlerContext = (
 
 let getContractRegisterContext = (~onRegister) => {
   //TODO only add contracts we've registered for the event in the config
-  addFiatTokenProxy:  makeDynamicContractRegisterFn(~contractName=FiatTokenProxy, ~onRegister),
-  addTokenMintERC20Token:  makeDynamicContractRegisterFn(~contractName=TokenMintERC20Token, ~onRegister),
+  addCHOGTokenMintERC20Token:  makeDynamicContractRegisterFn(~contractName=CHOGTokenMintERC20Token, ~onRegister),
+  addDAKTokenMintERC20Token:  makeDynamicContractRegisterFn(~contractName=DAKTokenMintERC20Token, ~onRegister),
+  addWETHTokenMintERC20Token:  makeDynamicContractRegisterFn(~contractName=WETHTokenMintERC20Token, ~onRegister),
+  addYAKITokenMintERC20Token:  makeDynamicContractRegisterFn(~contractName=YAKITokenMintERC20Token, ~onRegister),
 }->(Utils.magic: Types.contractRegistrations => Internal.contractRegisterContext)
 
 let getLoaderContext = (contextEnv: t, ~inMemoryStore: InMemoryStore.t, ~loadLayer: LoadLayer.t) => {
   let {logger} = contextEnv
   {
     log: logger->getUserLogger,
-    fiatTokenProxy_AdminChanged: {
+    cHOGTokenMintERC20Token_Approval: {
       get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_AdminChanged),
+        ~entityMod=module(Entities.CHOGTokenMintERC20Token_Approval),
         ~inMemoryStore,
         ~logger,
       ),
@@ -146,9 +148,9 @@ let getLoaderContext = (contextEnv: t, ~inMemoryStore: InMemoryStore.t, ~loadLay
         
       },
     },
-    fiatTokenProxy_Approval: {
+    cHOGTokenMintERC20Token_Transfer: {
       get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_Approval),
+        ~entityMod=module(Entities.CHOGTokenMintERC20Token_Transfer),
         ~inMemoryStore,
         ~logger,
       ),
@@ -156,9 +158,9 @@ let getLoaderContext = (contextEnv: t, ~inMemoryStore: InMemoryStore.t, ~loadLay
         
       },
     },
-    fiatTokenProxy_AuthorizationCanceled: {
+    dAKTokenMintERC20Token_Approval: {
       get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_AuthorizationCanceled),
+        ~entityMod=module(Entities.DAKTokenMintERC20Token_Approval),
         ~inMemoryStore,
         ~logger,
       ),
@@ -166,9 +168,9 @@ let getLoaderContext = (contextEnv: t, ~inMemoryStore: InMemoryStore.t, ~loadLay
         
       },
     },
-    fiatTokenProxy_AuthorizationUsed: {
+    dAKTokenMintERC20Token_Transfer: {
       get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_AuthorizationUsed),
+        ~entityMod=module(Entities.DAKTokenMintERC20Token_Transfer),
         ~inMemoryStore,
         ~logger,
       ),
@@ -176,9 +178,9 @@ let getLoaderContext = (contextEnv: t, ~inMemoryStore: InMemoryStore.t, ~loadLay
         
       },
     },
-    fiatTokenProxy_Blacklisted: {
+    wETHTokenMintERC20Token_Approval: {
       get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_Blacklisted),
+        ~entityMod=module(Entities.WETHTokenMintERC20Token_Approval),
         ~inMemoryStore,
         ~logger,
       ),
@@ -186,9 +188,9 @@ let getLoaderContext = (contextEnv: t, ~inMemoryStore: InMemoryStore.t, ~loadLay
         
       },
     },
-    fiatTokenProxy_BlacklisterChanged: {
+    wETHTokenMintERC20Token_Transfer: {
       get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_BlacklisterChanged),
+        ~entityMod=module(Entities.WETHTokenMintERC20Token_Transfer),
         ~inMemoryStore,
         ~logger,
       ),
@@ -196,9 +198,9 @@ let getLoaderContext = (contextEnv: t, ~inMemoryStore: InMemoryStore.t, ~loadLay
         
       },
     },
-    fiatTokenProxy_Burn: {
+    yAKITokenMintERC20Token_Approval: {
       get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_Burn),
+        ~entityMod=module(Entities.YAKITokenMintERC20Token_Approval),
         ~inMemoryStore,
         ~logger,
       ),
@@ -206,139 +208,9 @@ let getLoaderContext = (contextEnv: t, ~inMemoryStore: InMemoryStore.t, ~loadLay
         
       },
     },
-    fiatTokenProxy_MasterMinterChanged: {
+    yAKITokenMintERC20Token_Transfer: {
       get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_MasterMinterChanged),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_Mint: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_Mint),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_MinterConfigured: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_MinterConfigured),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_MinterRemoved: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_MinterRemoved),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_OwnershipTransferred: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_OwnershipTransferred),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_Pause: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_Pause),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_PauserChanged: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_PauserChanged),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_RescuerChanged: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_RescuerChanged),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_Transfer: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_Transfer),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_UnBlacklisted: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_UnBlacklisted),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_Unpause: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_Unpause),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    fiatTokenProxy_Upgraded: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.FiatTokenProxy_Upgraded),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    tokenMintERC20Token_Approval: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.TokenMintERC20Token_Approval),
-        ~inMemoryStore,
-        ~logger,
-      ),
-      getWhere: {
-        
-      },
-    },
-    tokenMintERC20Token_Transfer: {
-      get: loadLayer->LoadLayer.makeLoader(
-        ~entityMod=module(Entities.TokenMintERC20Token_Transfer),
+        ~entityMod=module(Entities.YAKITokenMintERC20Token_Transfer),
         ~inMemoryStore,
         ~logger,
       ),
@@ -360,190 +232,73 @@ let getHandlerContext = (
   let eventIdentifier = eventItem->makeEventIdentifier
   {
     log: logger->getUserLogger,
-    fiatTokenProxy_AdminChanged: makeEntityHandlerContext(
+    cHOGTokenMintERC20Token_Approval: makeEntityHandlerContext(
       ~eventIdentifier,
       ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_AdminChanged),
+      ~entityMod=module(Entities.CHOGTokenMintERC20Token_Approval),
       ~getKey=entity => entity.id,
       ~logger,
       ~loadLayer,
       ~shouldSaveHistory,
     ),
-    fiatTokenProxy_Approval: makeEntityHandlerContext(
+    cHOGTokenMintERC20Token_Transfer: makeEntityHandlerContext(
       ~eventIdentifier,
       ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_Approval),
+      ~entityMod=module(Entities.CHOGTokenMintERC20Token_Transfer),
       ~getKey=entity => entity.id,
       ~logger,
       ~loadLayer,
       ~shouldSaveHistory,
     ),
-    fiatTokenProxy_AuthorizationCanceled: makeEntityHandlerContext(
+    dAKTokenMintERC20Token_Approval: makeEntityHandlerContext(
       ~eventIdentifier,
       ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_AuthorizationCanceled),
+      ~entityMod=module(Entities.DAKTokenMintERC20Token_Approval),
       ~getKey=entity => entity.id,
       ~logger,
       ~loadLayer,
       ~shouldSaveHistory,
     ),
-    fiatTokenProxy_AuthorizationUsed: makeEntityHandlerContext(
+    dAKTokenMintERC20Token_Transfer: makeEntityHandlerContext(
       ~eventIdentifier,
       ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_AuthorizationUsed),
+      ~entityMod=module(Entities.DAKTokenMintERC20Token_Transfer),
       ~getKey=entity => entity.id,
       ~logger,
       ~loadLayer,
       ~shouldSaveHistory,
     ),
-    fiatTokenProxy_Blacklisted: makeEntityHandlerContext(
+    wETHTokenMintERC20Token_Approval: makeEntityHandlerContext(
       ~eventIdentifier,
       ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_Blacklisted),
+      ~entityMod=module(Entities.WETHTokenMintERC20Token_Approval),
       ~getKey=entity => entity.id,
       ~logger,
       ~loadLayer,
       ~shouldSaveHistory,
     ),
-    fiatTokenProxy_BlacklisterChanged: makeEntityHandlerContext(
+    wETHTokenMintERC20Token_Transfer: makeEntityHandlerContext(
       ~eventIdentifier,
       ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_BlacklisterChanged),
+      ~entityMod=module(Entities.WETHTokenMintERC20Token_Transfer),
       ~getKey=entity => entity.id,
       ~logger,
       ~loadLayer,
       ~shouldSaveHistory,
     ),
-    fiatTokenProxy_Burn: makeEntityHandlerContext(
+    yAKITokenMintERC20Token_Approval: makeEntityHandlerContext(
       ~eventIdentifier,
       ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_Burn),
+      ~entityMod=module(Entities.YAKITokenMintERC20Token_Approval),
       ~getKey=entity => entity.id,
       ~logger,
       ~loadLayer,
       ~shouldSaveHistory,
     ),
-    fiatTokenProxy_MasterMinterChanged: makeEntityHandlerContext(
+    yAKITokenMintERC20Token_Transfer: makeEntityHandlerContext(
       ~eventIdentifier,
       ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_MasterMinterChanged),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_Mint: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_Mint),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_MinterConfigured: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_MinterConfigured),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_MinterRemoved: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_MinterRemoved),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_OwnershipTransferred: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_OwnershipTransferred),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_Pause: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_Pause),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_PauserChanged: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_PauserChanged),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_RescuerChanged: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_RescuerChanged),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_Transfer: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_Transfer),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_UnBlacklisted: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_UnBlacklisted),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_Unpause: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_Unpause),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    fiatTokenProxy_Upgraded: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.FiatTokenProxy_Upgraded),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    tokenMintERC20Token_Approval: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.TokenMintERC20Token_Approval),
-      ~getKey=entity => entity.id,
-      ~logger,
-      ~loadLayer,
-      ~shouldSaveHistory,
-    ),
-    tokenMintERC20Token_Transfer: makeEntityHandlerContext(
-      ~eventIdentifier,
-      ~inMemoryStore,
-      ~entityMod=module(Entities.TokenMintERC20Token_Transfer),
+      ~entityMod=module(Entities.YAKITokenMintERC20Token_Transfer),
       ~getKey=entity => entity.id,
       ~logger,
       ~loadLayer,

@@ -223,52 +223,14 @@ module EventFunctions = {
 }
 
 
-module FiatTokenProxy = {
-  module AdminChanged = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.AdminChanged.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.AdminChanged.name,
-      ~handlerRegister=Types.FiatTokenProxy.AdminChanged.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.AdminChanged.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("previousAdmin")
-      previousAdmin?: Address.t,
-      @as("newAdmin")
-      newAdmin?: Address.t,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?previousAdmin,
-        ?newAdmin,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       previousAdmin: previousAdmin->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-       newAdmin: newAdmin->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-      }
-->(Utils.magic: Types.FiatTokenProxy.AdminChanged.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.AdminChanged.event)
-    }
-  }
-
+module CHOGTokenMintERC20Token = {
   module Approval = {
     @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.Approval.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.Approval.name,
-      ~handlerRegister=Types.FiatTokenProxy.Approval.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.Approval.paramsRawEventSchema,
+    let processEvent: EventFunctions.eventProcessor<Types.CHOGTokenMintERC20Token.Approval.event> = EventFunctions.makeEventProcessor(
+      ~contractName=Types.CHOGTokenMintERC20Token.contractName,
+      ~eventName=Types.CHOGTokenMintERC20Token.Approval.name,
+      ~handlerRegister=Types.CHOGTokenMintERC20Token.Approval.handlerRegister,
+      ~paramsRawEventSchema=Types.CHOGTokenMintERC20Token.Approval.paramsRawEventSchema,
     )
 
     @genType
@@ -297,485 +259,20 @@ module FiatTokenProxy = {
        spender: spender->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
        value: value->Belt.Option.getWithDefault(0n),
       }
-->(Utils.magic: Types.FiatTokenProxy.Approval.eventArgs => Internal.eventParams)
+->(Utils.magic: Types.CHOGTokenMintERC20Token.Approval.eventArgs => Internal.eventParams)
 
       EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.Approval.event)
-    }
-  }
-
-  module AuthorizationCanceled = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.AuthorizationCanceled.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.AuthorizationCanceled.name,
-      ~handlerRegister=Types.FiatTokenProxy.AuthorizationCanceled.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.AuthorizationCanceled.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("authorizer")
-      authorizer?: Address.t,
-      @as("nonce")
-      nonce?: string,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?authorizer,
-        ?nonce,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       authorizer: authorizer->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-       nonce: nonce->Belt.Option.getWithDefault("foo"),
-      }
-->(Utils.magic: Types.FiatTokenProxy.AuthorizationCanceled.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.AuthorizationCanceled.event)
-    }
-  }
-
-  module AuthorizationUsed = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.AuthorizationUsed.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.AuthorizationUsed.name,
-      ~handlerRegister=Types.FiatTokenProxy.AuthorizationUsed.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.AuthorizationUsed.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("authorizer")
-      authorizer?: Address.t,
-      @as("nonce")
-      nonce?: string,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?authorizer,
-        ?nonce,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       authorizer: authorizer->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-       nonce: nonce->Belt.Option.getWithDefault("foo"),
-      }
-->(Utils.magic: Types.FiatTokenProxy.AuthorizationUsed.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.AuthorizationUsed.event)
-    }
-  }
-
-  module Blacklisted = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.Blacklisted.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.Blacklisted.name,
-      ~handlerRegister=Types.FiatTokenProxy.Blacklisted.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.Blacklisted.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("_account")
-      _account?: Address.t,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?_account,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       _account: _account->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-      }
-->(Utils.magic: Types.FiatTokenProxy.Blacklisted.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.Blacklisted.event)
-    }
-  }
-
-  module BlacklisterChanged = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.BlacklisterChanged.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.BlacklisterChanged.name,
-      ~handlerRegister=Types.FiatTokenProxy.BlacklisterChanged.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.BlacklisterChanged.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("newBlacklister")
-      newBlacklister?: Address.t,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?newBlacklister,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       newBlacklister: newBlacklister->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-      }
-->(Utils.magic: Types.FiatTokenProxy.BlacklisterChanged.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.BlacklisterChanged.event)
-    }
-  }
-
-  module Burn = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.Burn.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.Burn.name,
-      ~handlerRegister=Types.FiatTokenProxy.Burn.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.Burn.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("burner")
-      burner?: Address.t,
-      @as("amount")
-      amount?: bigint,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?burner,
-        ?amount,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       burner: burner->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-       amount: amount->Belt.Option.getWithDefault(0n),
-      }
-->(Utils.magic: Types.FiatTokenProxy.Burn.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.Burn.event)
-    }
-  }
-
-  module MasterMinterChanged = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.MasterMinterChanged.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.MasterMinterChanged.name,
-      ~handlerRegister=Types.FiatTokenProxy.MasterMinterChanged.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.MasterMinterChanged.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("newMasterMinter")
-      newMasterMinter?: Address.t,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?newMasterMinter,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       newMasterMinter: newMasterMinter->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-      }
-->(Utils.magic: Types.FiatTokenProxy.MasterMinterChanged.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.MasterMinterChanged.event)
-    }
-  }
-
-  module Mint = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.Mint.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.Mint.name,
-      ~handlerRegister=Types.FiatTokenProxy.Mint.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.Mint.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("minter")
-      minter?: Address.t,
-      @as("to")
-      to?: Address.t,
-      @as("amount")
-      amount?: bigint,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?minter,
-        ?to,
-        ?amount,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       minter: minter->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-       to: to->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-       amount: amount->Belt.Option.getWithDefault(0n),
-      }
-->(Utils.magic: Types.FiatTokenProxy.Mint.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.Mint.event)
-    }
-  }
-
-  module MinterConfigured = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.MinterConfigured.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.MinterConfigured.name,
-      ~handlerRegister=Types.FiatTokenProxy.MinterConfigured.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.MinterConfigured.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("minter")
-      minter?: Address.t,
-      @as("minterAllowedAmount")
-      minterAllowedAmount?: bigint,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?minter,
-        ?minterAllowedAmount,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       minter: minter->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-       minterAllowedAmount: minterAllowedAmount->Belt.Option.getWithDefault(0n),
-      }
-->(Utils.magic: Types.FiatTokenProxy.MinterConfigured.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.MinterConfigured.event)
-    }
-  }
-
-  module MinterRemoved = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.MinterRemoved.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.MinterRemoved.name,
-      ~handlerRegister=Types.FiatTokenProxy.MinterRemoved.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.MinterRemoved.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("oldMinter")
-      oldMinter?: Address.t,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?oldMinter,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       oldMinter: oldMinter->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-      }
-->(Utils.magic: Types.FiatTokenProxy.MinterRemoved.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.MinterRemoved.event)
-    }
-  }
-
-  module OwnershipTransferred = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.OwnershipTransferred.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.OwnershipTransferred.name,
-      ~handlerRegister=Types.FiatTokenProxy.OwnershipTransferred.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.OwnershipTransferred.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("previousOwner")
-      previousOwner?: Address.t,
-      @as("newOwner")
-      newOwner?: Address.t,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?previousOwner,
-        ?newOwner,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       previousOwner: previousOwner->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-       newOwner: newOwner->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-      }
-->(Utils.magic: Types.FiatTokenProxy.OwnershipTransferred.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.OwnershipTransferred.event)
-    }
-  }
-
-  module Pause = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.Pause.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.Pause.name,
-      ~handlerRegister=Types.FiatTokenProxy.Pause.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.Pause.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?mockEventData,
-      } = args
-
-      let params = 
-      ()
-      ->(Utils.magic: Types.FiatTokenProxy.Pause.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.Pause.event)
-    }
-  }
-
-  module PauserChanged = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.PauserChanged.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.PauserChanged.name,
-      ~handlerRegister=Types.FiatTokenProxy.PauserChanged.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.PauserChanged.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("newAddress")
-      newAddress?: Address.t,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?newAddress,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       newAddress: newAddress->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-      }
-->(Utils.magic: Types.FiatTokenProxy.PauserChanged.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.PauserChanged.event)
-    }
-  }
-
-  module RescuerChanged = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.RescuerChanged.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.RescuerChanged.name,
-      ~handlerRegister=Types.FiatTokenProxy.RescuerChanged.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.RescuerChanged.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("newRescuer")
-      newRescuer?: Address.t,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?newRescuer,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       newRescuer: newRescuer->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-      }
-->(Utils.magic: Types.FiatTokenProxy.RescuerChanged.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.RescuerChanged.event)
+        ->(Utils.magic: Internal.event => Types.CHOGTokenMintERC20Token.Approval.event)
     }
   }
 
   module Transfer = {
     @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.Transfer.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.Transfer.name,
-      ~handlerRegister=Types.FiatTokenProxy.Transfer.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.Transfer.paramsRawEventSchema,
+    let processEvent: EventFunctions.eventProcessor<Types.CHOGTokenMintERC20Token.Transfer.event> = EventFunctions.makeEventProcessor(
+      ~contractName=Types.CHOGTokenMintERC20Token.contractName,
+      ~eventName=Types.CHOGTokenMintERC20Token.Transfer.name,
+      ~handlerRegister=Types.CHOGTokenMintERC20Token.Transfer.handlerRegister,
+      ~paramsRawEventSchema=Types.CHOGTokenMintERC20Token.Transfer.paramsRawEventSchema,
     )
 
     @genType
@@ -804,121 +301,24 @@ module FiatTokenProxy = {
        to: to->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
        value: value->Belt.Option.getWithDefault(0n),
       }
-->(Utils.magic: Types.FiatTokenProxy.Transfer.eventArgs => Internal.eventParams)
+->(Utils.magic: Types.CHOGTokenMintERC20Token.Transfer.eventArgs => Internal.eventParams)
 
       EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.Transfer.event)
-    }
-  }
-
-  module UnBlacklisted = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.UnBlacklisted.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.UnBlacklisted.name,
-      ~handlerRegister=Types.FiatTokenProxy.UnBlacklisted.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.UnBlacklisted.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("_account")
-      _account?: Address.t,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?_account,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       _account: _account->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-      }
-->(Utils.magic: Types.FiatTokenProxy.UnBlacklisted.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.UnBlacklisted.event)
-    }
-  }
-
-  module Unpause = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.Unpause.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.Unpause.name,
-      ~handlerRegister=Types.FiatTokenProxy.Unpause.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.Unpause.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?mockEventData,
-      } = args
-
-      let params = 
-      ()
-      ->(Utils.magic: Types.FiatTokenProxy.Unpause.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.Unpause.event)
-    }
-  }
-
-  module Upgraded = {
-    @genType
-    let processEvent: EventFunctions.eventProcessor<Types.FiatTokenProxy.Upgraded.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.FiatTokenProxy.contractName,
-      ~eventName=Types.FiatTokenProxy.Upgraded.name,
-      ~handlerRegister=Types.FiatTokenProxy.Upgraded.handlerRegister,
-      ~paramsRawEventSchema=Types.FiatTokenProxy.Upgraded.paramsRawEventSchema,
-    )
-
-    @genType
-    type createMockArgs = {
-      @as("implementation")
-      implementation?: Address.t,
-      mockEventData?: EventFunctions.mockEventData,
-    }
-
-    @genType
-    let createMockEvent = args => {
-      let {
-        ?implementation,
-        ?mockEventData,
-      } = args
-
-      let params = 
-      {
-       implementation: implementation->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
-      }
-->(Utils.magic: Types.FiatTokenProxy.Upgraded.eventArgs => Internal.eventParams)
-
-      EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.FiatTokenProxy.Upgraded.event)
+        ->(Utils.magic: Internal.event => Types.CHOGTokenMintERC20Token.Transfer.event)
     }
   }
 
 }
 
 
-module TokenMintERC20Token = {
+module DAKTokenMintERC20Token = {
   module Approval = {
     @genType
-    let processEvent: EventFunctions.eventProcessor<Types.TokenMintERC20Token.Approval.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.TokenMintERC20Token.contractName,
-      ~eventName=Types.TokenMintERC20Token.Approval.name,
-      ~handlerRegister=Types.TokenMintERC20Token.Approval.handlerRegister,
-      ~paramsRawEventSchema=Types.TokenMintERC20Token.Approval.paramsRawEventSchema,
+    let processEvent: EventFunctions.eventProcessor<Types.DAKTokenMintERC20Token.Approval.event> = EventFunctions.makeEventProcessor(
+      ~contractName=Types.DAKTokenMintERC20Token.contractName,
+      ~eventName=Types.DAKTokenMintERC20Token.Approval.name,
+      ~handlerRegister=Types.DAKTokenMintERC20Token.Approval.handlerRegister,
+      ~paramsRawEventSchema=Types.DAKTokenMintERC20Token.Approval.paramsRawEventSchema,
     )
 
     @genType
@@ -947,20 +347,20 @@ module TokenMintERC20Token = {
        spender: spender->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
        value: value->Belt.Option.getWithDefault(0n),
       }
-->(Utils.magic: Types.TokenMintERC20Token.Approval.eventArgs => Internal.eventParams)
+->(Utils.magic: Types.DAKTokenMintERC20Token.Approval.eventArgs => Internal.eventParams)
 
       EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.TokenMintERC20Token.Approval.event)
+        ->(Utils.magic: Internal.event => Types.DAKTokenMintERC20Token.Approval.event)
     }
   }
 
   module Transfer = {
     @genType
-    let processEvent: EventFunctions.eventProcessor<Types.TokenMintERC20Token.Transfer.event> = EventFunctions.makeEventProcessor(
-      ~contractName=Types.TokenMintERC20Token.contractName,
-      ~eventName=Types.TokenMintERC20Token.Transfer.name,
-      ~handlerRegister=Types.TokenMintERC20Token.Transfer.handlerRegister,
-      ~paramsRawEventSchema=Types.TokenMintERC20Token.Transfer.paramsRawEventSchema,
+    let processEvent: EventFunctions.eventProcessor<Types.DAKTokenMintERC20Token.Transfer.event> = EventFunctions.makeEventProcessor(
+      ~contractName=Types.DAKTokenMintERC20Token.contractName,
+      ~eventName=Types.DAKTokenMintERC20Token.Transfer.name,
+      ~handlerRegister=Types.DAKTokenMintERC20Token.Transfer.handlerRegister,
+      ~paramsRawEventSchema=Types.DAKTokenMintERC20Token.Transfer.paramsRawEventSchema,
     )
 
     @genType
@@ -989,10 +389,186 @@ module TokenMintERC20Token = {
        to: to->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
        value: value->Belt.Option.getWithDefault(0n),
       }
-->(Utils.magic: Types.TokenMintERC20Token.Transfer.eventArgs => Internal.eventParams)
+->(Utils.magic: Types.DAKTokenMintERC20Token.Transfer.eventArgs => Internal.eventParams)
 
       EventFunctions.makeEventMocker(~params, ~mockEventData)
-        ->(Utils.magic: Internal.event => Types.TokenMintERC20Token.Transfer.event)
+        ->(Utils.magic: Internal.event => Types.DAKTokenMintERC20Token.Transfer.event)
+    }
+  }
+
+}
+
+
+module WETHTokenMintERC20Token = {
+  module Approval = {
+    @genType
+    let processEvent: EventFunctions.eventProcessor<Types.WETHTokenMintERC20Token.Approval.event> = EventFunctions.makeEventProcessor(
+      ~contractName=Types.WETHTokenMintERC20Token.contractName,
+      ~eventName=Types.WETHTokenMintERC20Token.Approval.name,
+      ~handlerRegister=Types.WETHTokenMintERC20Token.Approval.handlerRegister,
+      ~paramsRawEventSchema=Types.WETHTokenMintERC20Token.Approval.paramsRawEventSchema,
+    )
+
+    @genType
+    type createMockArgs = {
+      @as("owner")
+      owner?: Address.t,
+      @as("spender")
+      spender?: Address.t,
+      @as("value")
+      value?: bigint,
+      mockEventData?: EventFunctions.mockEventData,
+    }
+
+    @genType
+    let createMockEvent = args => {
+      let {
+        ?owner,
+        ?spender,
+        ?value,
+        ?mockEventData,
+      } = args
+
+      let params = 
+      {
+       owner: owner->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
+       spender: spender->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
+       value: value->Belt.Option.getWithDefault(0n),
+      }
+->(Utils.magic: Types.WETHTokenMintERC20Token.Approval.eventArgs => Internal.eventParams)
+
+      EventFunctions.makeEventMocker(~params, ~mockEventData)
+        ->(Utils.magic: Internal.event => Types.WETHTokenMintERC20Token.Approval.event)
+    }
+  }
+
+  module Transfer = {
+    @genType
+    let processEvent: EventFunctions.eventProcessor<Types.WETHTokenMintERC20Token.Transfer.event> = EventFunctions.makeEventProcessor(
+      ~contractName=Types.WETHTokenMintERC20Token.contractName,
+      ~eventName=Types.WETHTokenMintERC20Token.Transfer.name,
+      ~handlerRegister=Types.WETHTokenMintERC20Token.Transfer.handlerRegister,
+      ~paramsRawEventSchema=Types.WETHTokenMintERC20Token.Transfer.paramsRawEventSchema,
+    )
+
+    @genType
+    type createMockArgs = {
+      @as("from")
+      from?: Address.t,
+      @as("to")
+      to?: Address.t,
+      @as("value")
+      value?: bigint,
+      mockEventData?: EventFunctions.mockEventData,
+    }
+
+    @genType
+    let createMockEvent = args => {
+      let {
+        ?from,
+        ?to,
+        ?value,
+        ?mockEventData,
+      } = args
+
+      let params = 
+      {
+       from: from->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
+       to: to->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
+       value: value->Belt.Option.getWithDefault(0n),
+      }
+->(Utils.magic: Types.WETHTokenMintERC20Token.Transfer.eventArgs => Internal.eventParams)
+
+      EventFunctions.makeEventMocker(~params, ~mockEventData)
+        ->(Utils.magic: Internal.event => Types.WETHTokenMintERC20Token.Transfer.event)
+    }
+  }
+
+}
+
+
+module YAKITokenMintERC20Token = {
+  module Approval = {
+    @genType
+    let processEvent: EventFunctions.eventProcessor<Types.YAKITokenMintERC20Token.Approval.event> = EventFunctions.makeEventProcessor(
+      ~contractName=Types.YAKITokenMintERC20Token.contractName,
+      ~eventName=Types.YAKITokenMintERC20Token.Approval.name,
+      ~handlerRegister=Types.YAKITokenMintERC20Token.Approval.handlerRegister,
+      ~paramsRawEventSchema=Types.YAKITokenMintERC20Token.Approval.paramsRawEventSchema,
+    )
+
+    @genType
+    type createMockArgs = {
+      @as("owner")
+      owner?: Address.t,
+      @as("spender")
+      spender?: Address.t,
+      @as("value")
+      value?: bigint,
+      mockEventData?: EventFunctions.mockEventData,
+    }
+
+    @genType
+    let createMockEvent = args => {
+      let {
+        ?owner,
+        ?spender,
+        ?value,
+        ?mockEventData,
+      } = args
+
+      let params = 
+      {
+       owner: owner->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
+       spender: spender->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
+       value: value->Belt.Option.getWithDefault(0n),
+      }
+->(Utils.magic: Types.YAKITokenMintERC20Token.Approval.eventArgs => Internal.eventParams)
+
+      EventFunctions.makeEventMocker(~params, ~mockEventData)
+        ->(Utils.magic: Internal.event => Types.YAKITokenMintERC20Token.Approval.event)
+    }
+  }
+
+  module Transfer = {
+    @genType
+    let processEvent: EventFunctions.eventProcessor<Types.YAKITokenMintERC20Token.Transfer.event> = EventFunctions.makeEventProcessor(
+      ~contractName=Types.YAKITokenMintERC20Token.contractName,
+      ~eventName=Types.YAKITokenMintERC20Token.Transfer.name,
+      ~handlerRegister=Types.YAKITokenMintERC20Token.Transfer.handlerRegister,
+      ~paramsRawEventSchema=Types.YAKITokenMintERC20Token.Transfer.paramsRawEventSchema,
+    )
+
+    @genType
+    type createMockArgs = {
+      @as("from")
+      from?: Address.t,
+      @as("to")
+      to?: Address.t,
+      @as("value")
+      value?: bigint,
+      mockEventData?: EventFunctions.mockEventData,
+    }
+
+    @genType
+    let createMockEvent = args => {
+      let {
+        ?from,
+        ?to,
+        ?value,
+        ?mockEventData,
+      } = args
+
+      let params = 
+      {
+       from: from->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
+       to: to->Belt.Option.getWithDefault(TestHelpers_MockAddresses.defaultAddress),
+       value: value->Belt.Option.getWithDefault(0n),
+      }
+->(Utils.magic: Types.YAKITokenMintERC20Token.Transfer.eventArgs => Internal.eventParams)
+
+      EventFunctions.makeEventMocker(~params, ~mockEventData)
+        ->(Utils.magic: Internal.event => Types.YAKITokenMintERC20Token.Transfer.event)
     }
   }
 

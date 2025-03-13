@@ -1,18 +1,24 @@
 export {
-  FiatTokenProxy,
-  TokenMintERC20Token,
+  CHOGTokenMintERC20Token,
+  DAKTokenMintERC20Token,
+  WETHTokenMintERC20Token,
+  YAKITokenMintERC20Token,
 } from "./src/Handlers.gen";
 export type * from "./src/Types.gen";
 import {
-  FiatTokenProxy,
-  TokenMintERC20Token,
+  CHOGTokenMintERC20Token,
+  DAKTokenMintERC20Token,
+  WETHTokenMintERC20Token,
+  YAKITokenMintERC20Token,
 MockDb,
 Addresses 
 } from "./src/TestHelpers.gen";
 
 export const TestHelpers = {
-  FiatTokenProxy,
-  TokenMintERC20Token,
+  CHOGTokenMintERC20Token,
+  DAKTokenMintERC20Token,
+  WETHTokenMintERC20Token,
+  YAKITokenMintERC20Token,
 MockDb,
 Addresses 
 };

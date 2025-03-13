@@ -7,8 +7,10 @@ type id = string
 @genType
 type contractRegistrations = {
   // TODO: only add contracts we've registered for the event in the config
-  addFiatTokenProxy: (Address.t) => unit,
-  addTokenMintERC20Token: (Address.t) => unit,
+  addCHOGTokenMintERC20Token: (Address.t) => unit,
+  addDAKTokenMintERC20Token: (Address.t) => unit,
+  addWETHTokenMintERC20Token: (Address.t) => unit,
+  addYAKITokenMintERC20Token: (Address.t) => unit,
 }
 
 @genType
@@ -20,27 +22,14 @@ type entityLoaderContext<'entity, 'indexedFieldOperations> = {
 @genType
 type loaderContext = {
   log: Logs.userLogger,
-  @as("FiatTokenProxy_AdminChanged") fiatTokenProxy_AdminChanged: entityLoaderContext<Entities.FiatTokenProxy_AdminChanged.t, Entities.FiatTokenProxy_AdminChanged.indexedFieldOperations>,
-  @as("FiatTokenProxy_Approval") fiatTokenProxy_Approval: entityLoaderContext<Entities.FiatTokenProxy_Approval.t, Entities.FiatTokenProxy_Approval.indexedFieldOperations>,
-  @as("FiatTokenProxy_AuthorizationCanceled") fiatTokenProxy_AuthorizationCanceled: entityLoaderContext<Entities.FiatTokenProxy_AuthorizationCanceled.t, Entities.FiatTokenProxy_AuthorizationCanceled.indexedFieldOperations>,
-  @as("FiatTokenProxy_AuthorizationUsed") fiatTokenProxy_AuthorizationUsed: entityLoaderContext<Entities.FiatTokenProxy_AuthorizationUsed.t, Entities.FiatTokenProxy_AuthorizationUsed.indexedFieldOperations>,
-  @as("FiatTokenProxy_Blacklisted") fiatTokenProxy_Blacklisted: entityLoaderContext<Entities.FiatTokenProxy_Blacklisted.t, Entities.FiatTokenProxy_Blacklisted.indexedFieldOperations>,
-  @as("FiatTokenProxy_BlacklisterChanged") fiatTokenProxy_BlacklisterChanged: entityLoaderContext<Entities.FiatTokenProxy_BlacklisterChanged.t, Entities.FiatTokenProxy_BlacklisterChanged.indexedFieldOperations>,
-  @as("FiatTokenProxy_Burn") fiatTokenProxy_Burn: entityLoaderContext<Entities.FiatTokenProxy_Burn.t, Entities.FiatTokenProxy_Burn.indexedFieldOperations>,
-  @as("FiatTokenProxy_MasterMinterChanged") fiatTokenProxy_MasterMinterChanged: entityLoaderContext<Entities.FiatTokenProxy_MasterMinterChanged.t, Entities.FiatTokenProxy_MasterMinterChanged.indexedFieldOperations>,
-  @as("FiatTokenProxy_Mint") fiatTokenProxy_Mint: entityLoaderContext<Entities.FiatTokenProxy_Mint.t, Entities.FiatTokenProxy_Mint.indexedFieldOperations>,
-  @as("FiatTokenProxy_MinterConfigured") fiatTokenProxy_MinterConfigured: entityLoaderContext<Entities.FiatTokenProxy_MinterConfigured.t, Entities.FiatTokenProxy_MinterConfigured.indexedFieldOperations>,
-  @as("FiatTokenProxy_MinterRemoved") fiatTokenProxy_MinterRemoved: entityLoaderContext<Entities.FiatTokenProxy_MinterRemoved.t, Entities.FiatTokenProxy_MinterRemoved.indexedFieldOperations>,
-  @as("FiatTokenProxy_OwnershipTransferred") fiatTokenProxy_OwnershipTransferred: entityLoaderContext<Entities.FiatTokenProxy_OwnershipTransferred.t, Entities.FiatTokenProxy_OwnershipTransferred.indexedFieldOperations>,
-  @as("FiatTokenProxy_Pause") fiatTokenProxy_Pause: entityLoaderContext<Entities.FiatTokenProxy_Pause.t, Entities.FiatTokenProxy_Pause.indexedFieldOperations>,
-  @as("FiatTokenProxy_PauserChanged") fiatTokenProxy_PauserChanged: entityLoaderContext<Entities.FiatTokenProxy_PauserChanged.t, Entities.FiatTokenProxy_PauserChanged.indexedFieldOperations>,
-  @as("FiatTokenProxy_RescuerChanged") fiatTokenProxy_RescuerChanged: entityLoaderContext<Entities.FiatTokenProxy_RescuerChanged.t, Entities.FiatTokenProxy_RescuerChanged.indexedFieldOperations>,
-  @as("FiatTokenProxy_Transfer") fiatTokenProxy_Transfer: entityLoaderContext<Entities.FiatTokenProxy_Transfer.t, Entities.FiatTokenProxy_Transfer.indexedFieldOperations>,
-  @as("FiatTokenProxy_UnBlacklisted") fiatTokenProxy_UnBlacklisted: entityLoaderContext<Entities.FiatTokenProxy_UnBlacklisted.t, Entities.FiatTokenProxy_UnBlacklisted.indexedFieldOperations>,
-  @as("FiatTokenProxy_Unpause") fiatTokenProxy_Unpause: entityLoaderContext<Entities.FiatTokenProxy_Unpause.t, Entities.FiatTokenProxy_Unpause.indexedFieldOperations>,
-  @as("FiatTokenProxy_Upgraded") fiatTokenProxy_Upgraded: entityLoaderContext<Entities.FiatTokenProxy_Upgraded.t, Entities.FiatTokenProxy_Upgraded.indexedFieldOperations>,
-  @as("TokenMintERC20Token_Approval") tokenMintERC20Token_Approval: entityLoaderContext<Entities.TokenMintERC20Token_Approval.t, Entities.TokenMintERC20Token_Approval.indexedFieldOperations>,
-  @as("TokenMintERC20Token_Transfer") tokenMintERC20Token_Transfer: entityLoaderContext<Entities.TokenMintERC20Token_Transfer.t, Entities.TokenMintERC20Token_Transfer.indexedFieldOperations>,
+  @as("CHOGTokenMintERC20Token_Approval") cHOGTokenMintERC20Token_Approval: entityLoaderContext<Entities.CHOGTokenMintERC20Token_Approval.t, Entities.CHOGTokenMintERC20Token_Approval.indexedFieldOperations>,
+  @as("CHOGTokenMintERC20Token_Transfer") cHOGTokenMintERC20Token_Transfer: entityLoaderContext<Entities.CHOGTokenMintERC20Token_Transfer.t, Entities.CHOGTokenMintERC20Token_Transfer.indexedFieldOperations>,
+  @as("DAKTokenMintERC20Token_Approval") dAKTokenMintERC20Token_Approval: entityLoaderContext<Entities.DAKTokenMintERC20Token_Approval.t, Entities.DAKTokenMintERC20Token_Approval.indexedFieldOperations>,
+  @as("DAKTokenMintERC20Token_Transfer") dAKTokenMintERC20Token_Transfer: entityLoaderContext<Entities.DAKTokenMintERC20Token_Transfer.t, Entities.DAKTokenMintERC20Token_Transfer.indexedFieldOperations>,
+  @as("WETHTokenMintERC20Token_Approval") wETHTokenMintERC20Token_Approval: entityLoaderContext<Entities.WETHTokenMintERC20Token_Approval.t, Entities.WETHTokenMintERC20Token_Approval.indexedFieldOperations>,
+  @as("WETHTokenMintERC20Token_Transfer") wETHTokenMintERC20Token_Transfer: entityLoaderContext<Entities.WETHTokenMintERC20Token_Transfer.t, Entities.WETHTokenMintERC20Token_Transfer.indexedFieldOperations>,
+  @as("YAKITokenMintERC20Token_Approval") yAKITokenMintERC20Token_Approval: entityLoaderContext<Entities.YAKITokenMintERC20Token_Approval.t, Entities.YAKITokenMintERC20Token_Approval.indexedFieldOperations>,
+  @as("YAKITokenMintERC20Token_Transfer") yAKITokenMintERC20Token_Transfer: entityLoaderContext<Entities.YAKITokenMintERC20Token_Transfer.t, Entities.YAKITokenMintERC20Token_Transfer.indexedFieldOperations>,
 }
 
 @genType
@@ -54,72 +43,33 @@ type entityHandlerContext<'entity> = {
 @genType
 type handlerContext = {
   log: Logs.userLogger,
-  @as("FiatTokenProxy_AdminChanged") fiatTokenProxy_AdminChanged: entityHandlerContext<Entities.FiatTokenProxy_AdminChanged.t>,
-  @as("FiatTokenProxy_Approval") fiatTokenProxy_Approval: entityHandlerContext<Entities.FiatTokenProxy_Approval.t>,
-  @as("FiatTokenProxy_AuthorizationCanceled") fiatTokenProxy_AuthorizationCanceled: entityHandlerContext<Entities.FiatTokenProxy_AuthorizationCanceled.t>,
-  @as("FiatTokenProxy_AuthorizationUsed") fiatTokenProxy_AuthorizationUsed: entityHandlerContext<Entities.FiatTokenProxy_AuthorizationUsed.t>,
-  @as("FiatTokenProxy_Blacklisted") fiatTokenProxy_Blacklisted: entityHandlerContext<Entities.FiatTokenProxy_Blacklisted.t>,
-  @as("FiatTokenProxy_BlacklisterChanged") fiatTokenProxy_BlacklisterChanged: entityHandlerContext<Entities.FiatTokenProxy_BlacklisterChanged.t>,
-  @as("FiatTokenProxy_Burn") fiatTokenProxy_Burn: entityHandlerContext<Entities.FiatTokenProxy_Burn.t>,
-  @as("FiatTokenProxy_MasterMinterChanged") fiatTokenProxy_MasterMinterChanged: entityHandlerContext<Entities.FiatTokenProxy_MasterMinterChanged.t>,
-  @as("FiatTokenProxy_Mint") fiatTokenProxy_Mint: entityHandlerContext<Entities.FiatTokenProxy_Mint.t>,
-  @as("FiatTokenProxy_MinterConfigured") fiatTokenProxy_MinterConfigured: entityHandlerContext<Entities.FiatTokenProxy_MinterConfigured.t>,
-  @as("FiatTokenProxy_MinterRemoved") fiatTokenProxy_MinterRemoved: entityHandlerContext<Entities.FiatTokenProxy_MinterRemoved.t>,
-  @as("FiatTokenProxy_OwnershipTransferred") fiatTokenProxy_OwnershipTransferred: entityHandlerContext<Entities.FiatTokenProxy_OwnershipTransferred.t>,
-  @as("FiatTokenProxy_Pause") fiatTokenProxy_Pause: entityHandlerContext<Entities.FiatTokenProxy_Pause.t>,
-  @as("FiatTokenProxy_PauserChanged") fiatTokenProxy_PauserChanged: entityHandlerContext<Entities.FiatTokenProxy_PauserChanged.t>,
-  @as("FiatTokenProxy_RescuerChanged") fiatTokenProxy_RescuerChanged: entityHandlerContext<Entities.FiatTokenProxy_RescuerChanged.t>,
-  @as("FiatTokenProxy_Transfer") fiatTokenProxy_Transfer: entityHandlerContext<Entities.FiatTokenProxy_Transfer.t>,
-  @as("FiatTokenProxy_UnBlacklisted") fiatTokenProxy_UnBlacklisted: entityHandlerContext<Entities.FiatTokenProxy_UnBlacklisted.t>,
-  @as("FiatTokenProxy_Unpause") fiatTokenProxy_Unpause: entityHandlerContext<Entities.FiatTokenProxy_Unpause.t>,
-  @as("FiatTokenProxy_Upgraded") fiatTokenProxy_Upgraded: entityHandlerContext<Entities.FiatTokenProxy_Upgraded.t>,
-  @as("TokenMintERC20Token_Approval") tokenMintERC20Token_Approval: entityHandlerContext<Entities.TokenMintERC20Token_Approval.t>,
-  @as("TokenMintERC20Token_Transfer") tokenMintERC20Token_Transfer: entityHandlerContext<Entities.TokenMintERC20Token_Transfer.t>,
+  @as("CHOGTokenMintERC20Token_Approval") cHOGTokenMintERC20Token_Approval: entityHandlerContext<Entities.CHOGTokenMintERC20Token_Approval.t>,
+  @as("CHOGTokenMintERC20Token_Transfer") cHOGTokenMintERC20Token_Transfer: entityHandlerContext<Entities.CHOGTokenMintERC20Token_Transfer.t>,
+  @as("DAKTokenMintERC20Token_Approval") dAKTokenMintERC20Token_Approval: entityHandlerContext<Entities.DAKTokenMintERC20Token_Approval.t>,
+  @as("DAKTokenMintERC20Token_Transfer") dAKTokenMintERC20Token_Transfer: entityHandlerContext<Entities.DAKTokenMintERC20Token_Transfer.t>,
+  @as("WETHTokenMintERC20Token_Approval") wETHTokenMintERC20Token_Approval: entityHandlerContext<Entities.WETHTokenMintERC20Token_Approval.t>,
+  @as("WETHTokenMintERC20Token_Transfer") wETHTokenMintERC20Token_Transfer: entityHandlerContext<Entities.WETHTokenMintERC20Token_Transfer.t>,
+  @as("YAKITokenMintERC20Token_Approval") yAKITokenMintERC20Token_Approval: entityHandlerContext<Entities.YAKITokenMintERC20Token_Approval.t>,
+  @as("YAKITokenMintERC20Token_Transfer") yAKITokenMintERC20Token_Transfer: entityHandlerContext<Entities.YAKITokenMintERC20Token_Transfer.t>,
 }
 
 //Re-exporting types for backwards compatability
-@genType.as("FiatTokenProxy_AdminChanged")
-type fiatTokenProxy_AdminChanged = Entities.FiatTokenProxy_AdminChanged.t
-@genType.as("FiatTokenProxy_Approval")
-type fiatTokenProxy_Approval = Entities.FiatTokenProxy_Approval.t
-@genType.as("FiatTokenProxy_AuthorizationCanceled")
-type fiatTokenProxy_AuthorizationCanceled = Entities.FiatTokenProxy_AuthorizationCanceled.t
-@genType.as("FiatTokenProxy_AuthorizationUsed")
-type fiatTokenProxy_AuthorizationUsed = Entities.FiatTokenProxy_AuthorizationUsed.t
-@genType.as("FiatTokenProxy_Blacklisted")
-type fiatTokenProxy_Blacklisted = Entities.FiatTokenProxy_Blacklisted.t
-@genType.as("FiatTokenProxy_BlacklisterChanged")
-type fiatTokenProxy_BlacklisterChanged = Entities.FiatTokenProxy_BlacklisterChanged.t
-@genType.as("FiatTokenProxy_Burn")
-type fiatTokenProxy_Burn = Entities.FiatTokenProxy_Burn.t
-@genType.as("FiatTokenProxy_MasterMinterChanged")
-type fiatTokenProxy_MasterMinterChanged = Entities.FiatTokenProxy_MasterMinterChanged.t
-@genType.as("FiatTokenProxy_Mint")
-type fiatTokenProxy_Mint = Entities.FiatTokenProxy_Mint.t
-@genType.as("FiatTokenProxy_MinterConfigured")
-type fiatTokenProxy_MinterConfigured = Entities.FiatTokenProxy_MinterConfigured.t
-@genType.as("FiatTokenProxy_MinterRemoved")
-type fiatTokenProxy_MinterRemoved = Entities.FiatTokenProxy_MinterRemoved.t
-@genType.as("FiatTokenProxy_OwnershipTransferred")
-type fiatTokenProxy_OwnershipTransferred = Entities.FiatTokenProxy_OwnershipTransferred.t
-@genType.as("FiatTokenProxy_Pause")
-type fiatTokenProxy_Pause = Entities.FiatTokenProxy_Pause.t
-@genType.as("FiatTokenProxy_PauserChanged")
-type fiatTokenProxy_PauserChanged = Entities.FiatTokenProxy_PauserChanged.t
-@genType.as("FiatTokenProxy_RescuerChanged")
-type fiatTokenProxy_RescuerChanged = Entities.FiatTokenProxy_RescuerChanged.t
-@genType.as("FiatTokenProxy_Transfer")
-type fiatTokenProxy_Transfer = Entities.FiatTokenProxy_Transfer.t
-@genType.as("FiatTokenProxy_UnBlacklisted")
-type fiatTokenProxy_UnBlacklisted = Entities.FiatTokenProxy_UnBlacklisted.t
-@genType.as("FiatTokenProxy_Unpause")
-type fiatTokenProxy_Unpause = Entities.FiatTokenProxy_Unpause.t
-@genType.as("FiatTokenProxy_Upgraded")
-type fiatTokenProxy_Upgraded = Entities.FiatTokenProxy_Upgraded.t
-@genType.as("TokenMintERC20Token_Approval")
-type tokenMintERC20Token_Approval = Entities.TokenMintERC20Token_Approval.t
-@genType.as("TokenMintERC20Token_Transfer")
-type tokenMintERC20Token_Transfer = Entities.TokenMintERC20Token_Transfer.t
+@genType.as("CHOGTokenMintERC20Token_Approval")
+type cHOGTokenMintERC20Token_Approval = Entities.CHOGTokenMintERC20Token_Approval.t
+@genType.as("CHOGTokenMintERC20Token_Transfer")
+type cHOGTokenMintERC20Token_Transfer = Entities.CHOGTokenMintERC20Token_Transfer.t
+@genType.as("DAKTokenMintERC20Token_Approval")
+type dAKTokenMintERC20Token_Approval = Entities.DAKTokenMintERC20Token_Approval.t
+@genType.as("DAKTokenMintERC20Token_Transfer")
+type dAKTokenMintERC20Token_Transfer = Entities.DAKTokenMintERC20Token_Transfer.t
+@genType.as("WETHTokenMintERC20Token_Approval")
+type wETHTokenMintERC20Token_Approval = Entities.WETHTokenMintERC20Token_Approval.t
+@genType.as("WETHTokenMintERC20Token_Transfer")
+type wETHTokenMintERC20Token_Transfer = Entities.WETHTokenMintERC20Token_Transfer.t
+@genType.as("YAKITokenMintERC20Token_Approval")
+type yAKITokenMintERC20Token_Approval = Entities.YAKITokenMintERC20Token_Approval.t
+@genType.as("YAKITokenMintERC20Token_Transfer")
+type yAKITokenMintERC20Token_Transfer = Entities.YAKITokenMintERC20Token_Transfer.t
 
 type eventIdentifier = {
   chainId: int,
@@ -602,57 +552,10 @@ module MakeRegister = (Event: Event) => {
     )
 }
 
-module FiatTokenProxy = {
-let abi = Ethers.makeAbi((%raw(`[{"type":"event","name":"AdminChanged","inputs":[{"name":"previousAdmin","type":"address","indexed":false},{"name":"newAdmin","type":"address","indexed":false}],"anonymous":false},{"type":"event","name":"Approval","inputs":[{"name":"owner","type":"address","indexed":true},{"name":"spender","type":"address","indexed":true},{"name":"value","type":"uint256","indexed":false}],"anonymous":false},{"type":"event","name":"AuthorizationCanceled","inputs":[{"name":"authorizer","type":"address","indexed":true},{"name":"nonce","type":"bytes32","indexed":true}],"anonymous":false},{"type":"event","name":"AuthorizationUsed","inputs":[{"name":"authorizer","type":"address","indexed":true},{"name":"nonce","type":"bytes32","indexed":true}],"anonymous":false},{"type":"event","name":"Blacklisted","inputs":[{"name":"_account","type":"address","indexed":true}],"anonymous":false},{"type":"event","name":"BlacklisterChanged","inputs":[{"name":"newBlacklister","type":"address","indexed":true}],"anonymous":false},{"type":"event","name":"Burn","inputs":[{"name":"burner","type":"address","indexed":true},{"name":"amount","type":"uint256","indexed":false}],"anonymous":false},{"type":"event","name":"MasterMinterChanged","inputs":[{"name":"newMasterMinter","type":"address","indexed":true}],"anonymous":false},{"type":"event","name":"Mint","inputs":[{"name":"minter","type":"address","indexed":true},{"name":"to","type":"address","indexed":true},{"name":"amount","type":"uint256","indexed":false}],"anonymous":false},{"type":"event","name":"MinterConfigured","inputs":[{"name":"minter","type":"address","indexed":true},{"name":"minterAllowedAmount","type":"uint256","indexed":false}],"anonymous":false},{"type":"event","name":"MinterRemoved","inputs":[{"name":"oldMinter","type":"address","indexed":true}],"anonymous":false},{"type":"event","name":"OwnershipTransferred","inputs":[{"name":"previousOwner","type":"address","indexed":false},{"name":"newOwner","type":"address","indexed":false}],"anonymous":false},{"type":"event","name":"Pause","inputs":[],"anonymous":false},{"type":"event","name":"PauserChanged","inputs":[{"name":"newAddress","type":"address","indexed":true}],"anonymous":false},{"type":"event","name":"RescuerChanged","inputs":[{"name":"newRescuer","type":"address","indexed":true}],"anonymous":false},{"type":"event","name":"Transfer","inputs":[{"name":"from","type":"address","indexed":true},{"name":"to","type":"address","indexed":true},{"name":"value","type":"uint256","indexed":false}],"anonymous":false},{"type":"event","name":"UnBlacklisted","inputs":[{"name":"_account","type":"address","indexed":true}],"anonymous":false},{"type":"event","name":"Unpause","inputs":[],"anonymous":false},{"type":"event","name":"Upgraded","inputs":[{"name":"implementation","type":"address","indexed":false}],"anonymous":false}]`): Js.Json.t))
-let eventSignatures = ["AdminChanged(address previousAdmin, address newAdmin)", "Approval(address indexed owner, address indexed spender, uint256 value)", "AuthorizationCanceled(address indexed authorizer, bytes32 indexed nonce)", "AuthorizationUsed(address indexed authorizer, bytes32 indexed nonce)", "Blacklisted(address indexed _account)", "BlacklisterChanged(address indexed newBlacklister)", "Burn(address indexed burner, uint256 amount)", "MasterMinterChanged(address indexed newMasterMinter)", "Mint(address indexed minter, address indexed to, uint256 amount)", "MinterConfigured(address indexed minter, uint256 minterAllowedAmount)", "MinterRemoved(address indexed oldMinter)", "OwnershipTransferred(address previousOwner, address newOwner)", "Pause()", "PauserChanged(address indexed newAddress)", "RescuerChanged(address indexed newRescuer)", "Transfer(address indexed from, address indexed to, uint256 value)", "UnBlacklisted(address indexed _account)", "Unpause()", "Upgraded(address implementation)"]
-let contractName = "FiatTokenProxy"
-
-module AdminChanged = {
-
-let id = "0x7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f_1"
-let sighash = "0x7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f"
-let name = "AdminChanged"
-let contractName = contractName
-
-@genType
-type eventArgs = {previousAdmin: Address.t, newAdmin: Address.t}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {previousAdmin: s.field("previousAdmin", Address.schema), newAdmin: s.field("newAdmin", Address.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        previousAdmin: decodedEvent.body->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-        newAdmin: decodedEvent.body->Js.Array2.unsafe_get(1)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = {  }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], )->Utils.unwrapResultExn)
-
-}
+module CHOGTokenMintERC20Token = {
+let abi = Ethers.makeAbi((%raw(`[{"type":"event","name":"Approval","inputs":[{"name":"owner","type":"address","indexed":true},{"name":"spender","type":"address","indexed":true},{"name":"value","type":"uint256","indexed":false}],"anonymous":false},{"type":"event","name":"Transfer","inputs":[{"name":"from","type":"address","indexed":true},{"name":"to","type":"address","indexed":true},{"name":"value","type":"uint256","indexed":false}],"anonymous":false}]`): Js.Json.t))
+let eventSignatures = ["Approval(address indexed owner, address indexed spender, uint256 value)", "Transfer(address indexed from, address indexed to, uint256 value)"]
+let contractName = "CHOGTokenMintERC20Token"
 
 module Approval = {
 
@@ -699,607 +602,6 @@ let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
 type eventFilter = { @as("owner") owner?: SingleOrMultiple.t<Address.t>, @as("spender") spender?: SingleOrMultiple.t<Address.t> }
 
 let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.owner->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), ~topic2=?_eventFilter.spender->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
-
-}
-
-module AuthorizationCanceled = {
-
-let id = "0x1cdd46ff242716cdaa72d159d339a485b3438398348d68f09d7c8c0a59353d81_3"
-let sighash = "0x1cdd46ff242716cdaa72d159d339a485b3438398348d68f09d7c8c0a59353d81"
-let name = "AuthorizationCanceled"
-let contractName = contractName
-
-@genType
-type eventArgs = {authorizer: Address.t, nonce: string}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {authorizer: s.field("authorizer", Address.schema), nonce: s.field("nonce", S.string)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        authorizer: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-        nonce: decodedEvent.indexed->Js.Array2.unsafe_get(1)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("authorizer") authorizer?: SingleOrMultiple.t<Address.t>, @as("nonce") nonce?: SingleOrMultiple.t<string> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.authorizer->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), ~topic2=?_eventFilter.nonce->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromBytes)), )->Utils.unwrapResultExn)
-
-}
-
-module AuthorizationUsed = {
-
-let id = "0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5_3"
-let sighash = "0x98de503528ee59b575ef0c0a2576a82497bfc029a5685b209e9ec333479b10a5"
-let name = "AuthorizationUsed"
-let contractName = contractName
-
-@genType
-type eventArgs = {authorizer: Address.t, nonce: string}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {authorizer: s.field("authorizer", Address.schema), nonce: s.field("nonce", S.string)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        authorizer: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-        nonce: decodedEvent.indexed->Js.Array2.unsafe_get(1)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("authorizer") authorizer?: SingleOrMultiple.t<Address.t>, @as("nonce") nonce?: SingleOrMultiple.t<string> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.authorizer->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), ~topic2=?_eventFilter.nonce->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromBytes)), )->Utils.unwrapResultExn)
-
-}
-
-module Blacklisted = {
-
-let id = "0xffa4e6181777692565cf28528fc88fd1516ea86b56da075235fa575af6a4b855_2"
-let sighash = "0xffa4e6181777692565cf28528fc88fd1516ea86b56da075235fa575af6a4b855"
-let name = "Blacklisted"
-let contractName = contractName
-
-@genType
-type eventArgs = {_account: Address.t}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {_account: s.field("_account", Address.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        _account: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("_account") _account?: SingleOrMultiple.t<Address.t> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter._account->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
-
-}
-
-module BlacklisterChanged = {
-
-let id = "0xc67398012c111ce95ecb7429b933096c977380ee6c421175a71a4a4c6c88c06e_2"
-let sighash = "0xc67398012c111ce95ecb7429b933096c977380ee6c421175a71a4a4c6c88c06e"
-let name = "BlacklisterChanged"
-let contractName = contractName
-
-@genType
-type eventArgs = {newBlacklister: Address.t}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {newBlacklister: s.field("newBlacklister", Address.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        newBlacklister: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("newBlacklister") newBlacklister?: SingleOrMultiple.t<Address.t> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.newBlacklister->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
-
-}
-
-module Burn = {
-
-let id = "0xcc16f5dbb4873280815c1ee09dbd06736cffcc184412cf7a71a0fdb75d397ca5_2"
-let sighash = "0xcc16f5dbb4873280815c1ee09dbd06736cffcc184412cf7a71a0fdb75d397ca5"
-let name = "Burn"
-let contractName = contractName
-
-@genType
-type eventArgs = {burner: Address.t, amount: bigint}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {burner: s.field("burner", Address.schema), amount: s.field("amount", BigInt.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        burner: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-        amount: decodedEvent.body->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("burner") burner?: SingleOrMultiple.t<Address.t> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.burner->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
-
-}
-
-module MasterMinterChanged = {
-
-let id = "0xdb66dfa9c6b8f5226fe9aac7e51897ae8ee94ac31dc70bb6c9900b2574b707e6_2"
-let sighash = "0xdb66dfa9c6b8f5226fe9aac7e51897ae8ee94ac31dc70bb6c9900b2574b707e6"
-let name = "MasterMinterChanged"
-let contractName = contractName
-
-@genType
-type eventArgs = {newMasterMinter: Address.t}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {newMasterMinter: s.field("newMasterMinter", Address.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        newMasterMinter: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("newMasterMinter") newMasterMinter?: SingleOrMultiple.t<Address.t> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.newMasterMinter->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
-
-}
-
-module Mint = {
-
-let id = "0xab8530f87dc9b59234c4623bf917212bb2536d647574c8e7e5da92c2ede0c9f8_3"
-let sighash = "0xab8530f87dc9b59234c4623bf917212bb2536d647574c8e7e5da92c2ede0c9f8"
-let name = "Mint"
-let contractName = contractName
-
-@genType
-type eventArgs = {minter: Address.t, to: Address.t, amount: bigint}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {minter: s.field("minter", Address.schema), to: s.field("to", Address.schema), amount: s.field("amount", BigInt.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        minter: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-        to: decodedEvent.indexed->Js.Array2.unsafe_get(1)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-        amount: decodedEvent.body->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("minter") minter?: SingleOrMultiple.t<Address.t>, @as("to") to?: SingleOrMultiple.t<Address.t> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.minter->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), ~topic2=?_eventFilter.to->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
-
-}
-
-module MinterConfigured = {
-
-let id = "0x46980fca912ef9bcdbd36877427b6b90e860769f604e89c0e67720cece530d20_2"
-let sighash = "0x46980fca912ef9bcdbd36877427b6b90e860769f604e89c0e67720cece530d20"
-let name = "MinterConfigured"
-let contractName = contractName
-
-@genType
-type eventArgs = {minter: Address.t, minterAllowedAmount: bigint}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {minter: s.field("minter", Address.schema), minterAllowedAmount: s.field("minterAllowedAmount", BigInt.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        minter: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-        minterAllowedAmount: decodedEvent.body->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("minter") minter?: SingleOrMultiple.t<Address.t> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.minter->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
-
-}
-
-module MinterRemoved = {
-
-let id = "0xe94479a9f7e1952cc78f2d6baab678adc1b772d936c6583def489e524cb66692_2"
-let sighash = "0xe94479a9f7e1952cc78f2d6baab678adc1b772d936c6583def489e524cb66692"
-let name = "MinterRemoved"
-let contractName = contractName
-
-@genType
-type eventArgs = {oldMinter: Address.t}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {oldMinter: s.field("oldMinter", Address.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        oldMinter: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("oldMinter") oldMinter?: SingleOrMultiple.t<Address.t> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.oldMinter->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
-
-}
-
-module OwnershipTransferred = {
-
-let id = "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0_1"
-let sighash = "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
-let name = "OwnershipTransferred"
-let contractName = contractName
-
-@genType
-type eventArgs = {previousOwner: Address.t, newOwner: Address.t}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {previousOwner: s.field("previousOwner", Address.schema), newOwner: s.field("newOwner", Address.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        previousOwner: decodedEvent.body->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-        newOwner: decodedEvent.body->Js.Array2.unsafe_get(1)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = {  }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], )->Utils.unwrapResultExn)
-
-}
-
-module Pause = {
-
-let id = "0x6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff625_1"
-let sighash = "0x6985a02210a168e66602d3235cb6db0e70f92b3ba4d376a33c0f3d9434bff625"
-let name = "Pause"
-let contractName = contractName
-
-@genType
-type eventArgs = unit
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.literal(%raw(`null`))->S.to(_ => ())
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = _ => ()
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = {  }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], )->Utils.unwrapResultExn)
-
-}
-
-module PauserChanged = {
-
-let id = "0xb80482a293ca2e013eda8683c9bd7fc8347cfdaeea5ede58cba46df502c2a604_2"
-let sighash = "0xb80482a293ca2e013eda8683c9bd7fc8347cfdaeea5ede58cba46df502c2a604"
-let name = "PauserChanged"
-let contractName = contractName
-
-@genType
-type eventArgs = {newAddress: Address.t}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {newAddress: s.field("newAddress", Address.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        newAddress: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("newAddress") newAddress?: SingleOrMultiple.t<Address.t> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.newAddress->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
-
-}
-
-module RescuerChanged = {
-
-let id = "0xe475e580d85111348e40d8ca33cfdd74c30fe1655c2d8537a13abc10065ffa5a_2"
-let sighash = "0xe475e580d85111348e40d8ca33cfdd74c30fe1655c2d8537a13abc10065ffa5a"
-let name = "RescuerChanged"
-let contractName = contractName
-
-@genType
-type eventArgs = {newRescuer: Address.t}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {newRescuer: s.field("newRescuer", Address.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        newRescuer: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("newRescuer") newRescuer?: SingleOrMultiple.t<Address.t> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.newRescuer->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
 
 }
 
@@ -1350,146 +652,216 @@ type eventFilter = { @as("from") from?: SingleOrMultiple.t<Address.t>, @as("to")
 let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.from->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), ~topic2=?_eventFilter.to->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
 
 }
-
-module UnBlacklisted = {
-
-let id = "0x117e3210bb9aa7d9baff172026820255c6f6c30ba8999d1c2fd88e2848137c4e_2"
-let sighash = "0x117e3210bb9aa7d9baff172026820255c6f6c30ba8999d1c2fd88e2848137c4e"
-let name = "UnBlacklisted"
-let contractName = contractName
-
-@genType
-type eventArgs = {_account: Address.t}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {_account: s.field("_account", Address.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        _account: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = { @as("_account") _account?: SingleOrMultiple.t<Address.t> }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter._account->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
-
 }
 
-module Unpause = {
-
-let id = "0x7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b33_1"
-let sighash = "0x7805862f689e2f13df9f062ff482ad3ad112aca9e0847911ed832e158c525b33"
-let name = "Unpause"
-let contractName = contractName
-
-@genType
-type eventArgs = unit
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.literal(%raw(`null`))->S.to(_ => ())
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = _ => ()
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = {  }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], )->Utils.unwrapResultExn)
-
-}
-
-module Upgraded = {
-
-let id = "0xbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b_1"
-let sighash = "0xbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b"
-let name = "Upgraded"
-let contractName = contractName
-
-@genType
-type eventArgs = {implementation: Address.t}
-@genType
-type block = Block.t
-@genType
-type transaction = Transaction.t
-
-@genType
-type event = Internal.genericEvent<eventArgs, block, transaction>
-@genType
-type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
-@genType
-type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
-@genType
-type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
-
-let paramsRawEventSchema = S.object((s): eventArgs => {implementation: s.field("implementation", Address.schema)})
-let blockSchema = Block.schema
-let transactionSchema = Transaction.schema
-
-let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
-      {
-        implementation: decodedEvent.body->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
-      }
-    }
-
-let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
-  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
-  ~contractName,
-  ~eventName=name,
-)
-
-@genType
-type eventFilter = {  }
-
-let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], )->Utils.unwrapResultExn)
-
-}
-}
-
-module TokenMintERC20Token = {
+module DAKTokenMintERC20Token = {
 let abi = Ethers.makeAbi((%raw(`[{"type":"event","name":"Approval","inputs":[{"name":"owner","type":"address","indexed":true},{"name":"spender","type":"address","indexed":true},{"name":"value","type":"uint256","indexed":false}],"anonymous":false},{"type":"event","name":"Transfer","inputs":[{"name":"from","type":"address","indexed":true},{"name":"to","type":"address","indexed":true},{"name":"value","type":"uint256","indexed":false}],"anonymous":false}]`): Js.Json.t))
 let eventSignatures = ["Approval(address indexed owner, address indexed spender, uint256 value)", "Transfer(address indexed from, address indexed to, uint256 value)"]
-let contractName = "TokenMintERC20Token"
+let contractName = "DAKTokenMintERC20Token"
+
+module Approval = {
+
+let id = "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925_3"
+let sighash = "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+let name = "Approval"
+let contractName = contractName
+
+@genType
+type eventArgs = {owner: Address.t, spender: Address.t, value: bigint}
+@genType
+type block = Block.t
+@genType
+type transaction = Transaction.t
+
+@genType
+type event = Internal.genericEvent<eventArgs, block, transaction>
+@genType
+type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
+@genType
+type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
+@genType
+type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
+
+let paramsRawEventSchema = S.object((s): eventArgs => {owner: s.field("owner", Address.schema), spender: s.field("spender", Address.schema), value: s.field("value", BigInt.schema)})
+let blockSchema = Block.schema
+let transactionSchema = Transaction.schema
+
+let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
+      {
+        owner: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+        spender: decodedEvent.indexed->Js.Array2.unsafe_get(1)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+        value: decodedEvent.body->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+      }
+    }
+
+let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
+  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
+  ~contractName,
+  ~eventName=name,
+)
+
+@genType
+type eventFilter = { @as("owner") owner?: SingleOrMultiple.t<Address.t>, @as("spender") spender?: SingleOrMultiple.t<Address.t> }
+
+let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.owner->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), ~topic2=?_eventFilter.spender->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
+
+}
+
+module Transfer = {
+
+let id = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef_3"
+let sighash = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+let name = "Transfer"
+let contractName = contractName
+
+@genType
+type eventArgs = {from: Address.t, to: Address.t, value: bigint}
+@genType
+type block = Block.t
+@genType
+type transaction = Transaction.t
+
+@genType
+type event = Internal.genericEvent<eventArgs, block, transaction>
+@genType
+type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
+@genType
+type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
+@genType
+type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
+
+let paramsRawEventSchema = S.object((s): eventArgs => {from: s.field("from", Address.schema), to: s.field("to", Address.schema), value: s.field("value", BigInt.schema)})
+let blockSchema = Block.schema
+let transactionSchema = Transaction.schema
+
+let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
+      {
+        from: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+        to: decodedEvent.indexed->Js.Array2.unsafe_get(1)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+        value: decodedEvent.body->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+      }
+    }
+
+let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
+  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
+  ~contractName,
+  ~eventName=name,
+)
+
+@genType
+type eventFilter = { @as("from") from?: SingleOrMultiple.t<Address.t>, @as("to") to?: SingleOrMultiple.t<Address.t> }
+
+let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.from->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), ~topic2=?_eventFilter.to->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
+
+}
+}
+
+module WETHTokenMintERC20Token = {
+let abi = Ethers.makeAbi((%raw(`[{"type":"event","name":"Approval","inputs":[{"name":"owner","type":"address","indexed":true},{"name":"spender","type":"address","indexed":true},{"name":"value","type":"uint256","indexed":false}],"anonymous":false},{"type":"event","name":"Transfer","inputs":[{"name":"from","type":"address","indexed":true},{"name":"to","type":"address","indexed":true},{"name":"value","type":"uint256","indexed":false}],"anonymous":false}]`): Js.Json.t))
+let eventSignatures = ["Approval(address indexed owner, address indexed spender, uint256 value)", "Transfer(address indexed from, address indexed to, uint256 value)"]
+let contractName = "WETHTokenMintERC20Token"
+
+module Approval = {
+
+let id = "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925_3"
+let sighash = "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+let name = "Approval"
+let contractName = contractName
+
+@genType
+type eventArgs = {owner: Address.t, spender: Address.t, value: bigint}
+@genType
+type block = Block.t
+@genType
+type transaction = Transaction.t
+
+@genType
+type event = Internal.genericEvent<eventArgs, block, transaction>
+@genType
+type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
+@genType
+type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
+@genType
+type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
+
+let paramsRawEventSchema = S.object((s): eventArgs => {owner: s.field("owner", Address.schema), spender: s.field("spender", Address.schema), value: s.field("value", BigInt.schema)})
+let blockSchema = Block.schema
+let transactionSchema = Transaction.schema
+
+let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
+      {
+        owner: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+        spender: decodedEvent.indexed->Js.Array2.unsafe_get(1)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+        value: decodedEvent.body->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+      }
+    }
+
+let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
+  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
+  ~contractName,
+  ~eventName=name,
+)
+
+@genType
+type eventFilter = { @as("owner") owner?: SingleOrMultiple.t<Address.t>, @as("spender") spender?: SingleOrMultiple.t<Address.t> }
+
+let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.owner->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), ~topic2=?_eventFilter.spender->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
+
+}
+
+module Transfer = {
+
+let id = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef_3"
+let sighash = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+let name = "Transfer"
+let contractName = contractName
+
+@genType
+type eventArgs = {from: Address.t, to: Address.t, value: bigint}
+@genType
+type block = Block.t
+@genType
+type transaction = Transaction.t
+
+@genType
+type event = Internal.genericEvent<eventArgs, block, transaction>
+@genType
+type loader<'loaderReturn> = Internal.genericLoader<Internal.genericLoaderArgs<event, loaderContext>, 'loaderReturn>
+@genType
+type handler<'loaderReturn> = Internal.genericHandler<Internal.genericHandlerArgs<event, handlerContext, 'loaderReturn>>
+@genType
+type contractRegister = Internal.genericContractRegister<Internal.genericContractRegisterArgs<event, contractRegistrations>>
+
+let paramsRawEventSchema = S.object((s): eventArgs => {from: s.field("from", Address.schema), to: s.field("to", Address.schema), value: s.field("value", BigInt.schema)})
+let blockSchema = Block.schema
+let transactionSchema = Transaction.schema
+
+let convertHyperSyncEventArgs = (decodedEvent: HyperSyncClient.Decoder.decodedEvent): eventArgs => {
+      {
+        from: decodedEvent.indexed->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+        to: decodedEvent.indexed->Js.Array2.unsafe_get(1)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+        value: decodedEvent.body->Js.Array2.unsafe_get(0)->HyperSyncClient.Decoder.toUnderlying->Utils.magic,
+      }
+    }
+
+let handlerRegister: HandlerTypes.Register.t = HandlerTypes.Register.make(
+  ~topic0=sighash->EvmTypes.Hex.fromStringUnsafe,
+  ~contractName,
+  ~eventName=name,
+)
+
+@genType
+type eventFilter = { @as("from") from?: SingleOrMultiple.t<Address.t>, @as("to") to?: SingleOrMultiple.t<Address.t> }
+
+let getTopicSelection = (eventFilters) => eventFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(_eventFilter => LogSelection.makeTopicSelection(~topic0=[sighash->EvmTypes.Hex.fromStringUnsafe], ~topic1=?_eventFilter.from->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), ~topic2=?_eventFilter.to->Belt.Option.map(topicFilters => topicFilters->SingleOrMultiple.normalizeOrThrow->Belt.Array.map(TopicFilter.fromAddress)), )->Utils.unwrapResultExn)
+
+}
+}
+
+module YAKITokenMintERC20Token = {
+let abi = Ethers.makeAbi((%raw(`[{"type":"event","name":"Approval","inputs":[{"name":"owner","type":"address","indexed":true},{"name":"spender","type":"address","indexed":true},{"name":"value","type":"uint256","indexed":false}],"anonymous":false},{"type":"event","name":"Transfer","inputs":[{"name":"from","type":"address","indexed":true},{"name":"to","type":"address","indexed":true},{"name":"value","type":"uint256","indexed":false}],"anonymous":false}]`): Js.Json.t))
+let eventSignatures = ["Approval(address indexed owner, address indexed spender, uint256 value)", "Transfer(address indexed from, address indexed to, uint256 value)"]
+let contractName = "YAKITokenMintERC20Token"
 
 module Approval = {
 

@@ -28,86 +28,55 @@ let registerContractHandlers = (
       {
         let contracts = [
           {
-            Config.name: "TokenMintERC20Token",
-            abi: Types.TokenMintERC20Token.abi,
+            Config.name: "WETHTokenMintERC20Token",
+            abi: Types.WETHTokenMintERC20Token.abi,
             addresses: [
-              "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE"->Address.Evm.fromStringOrThrow
+              "0xB5a30b0FDc5EA94A52fDc42e3E9760Cb8449Fb37"->Address.Evm.fromStringOrThrow
 ,
             ],
             events: [
-              module(Types.TokenMintERC20Token.Approval),
-              module(Types.TokenMintERC20Token.Transfer),
+              module(Types.WETHTokenMintERC20Token.Approval),
+              module(Types.WETHTokenMintERC20Token.Transfer),
             ],
           },
-        ]
-        let chain = ChainMap.Chain.makeUnsafe(~chainId=1)
-        {
-          Config.confirmedBlockThreshold: 200,
-          syncSource: 
-            HyperSync
-,
-          startBlock: 0,
-          endBlock:  None ,
-          chain,
-          contracts,
-          source:
-            HyperSyncSource.make({
-              chain,
-              contracts,
-              endpointUrl: "https://1.hypersync.xyz",
-              allEventSignatures: [
-                Types.TokenMintERC20Token.eventSignatures,
-              ]->Belt.Array.concatMany,
-              eventRouter:
-                contracts
-                ->Belt.Array.flatMap(contract => contract.events)
-                ->EventRouter.fromEvmEventModsOrThrow(~chain),
-              /*
-                Determines whether to use HypersyncClient Decoder or Viem for parsing events
-                Default is hypersync client decoder, configurable in config with:
-                ```yaml
-                event_decoder: "viem" || "hypersync-client"
-                ```
-              */
-              shouldUseHypersyncClientDecoder: Env.Configurable.shouldUseHypersyncClientDecoder->Belt.Option.getWithDefault(
-                true,
-              )
-            })
-        }
-      },
-      {
-        let contracts = [
           {
-            Config.name: "FiatTokenProxy",
-            abi: Types.FiatTokenProxy.abi,
+            Config.name: "DAKTokenMintERC20Token",
+            abi: Types.DAKTokenMintERC20Token.abi,
             addresses: [
-              "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"->Address.Evm.fromStringOrThrow
+              "0x0F0BDEbF0F83cD1EE3974779Bcb7315f9808c714"->Address.Evm.fromStringOrThrow
 ,
             ],
             events: [
-              module(Types.FiatTokenProxy.AdminChanged),
-              module(Types.FiatTokenProxy.Approval),
-              module(Types.FiatTokenProxy.AuthorizationCanceled),
-              module(Types.FiatTokenProxy.AuthorizationUsed),
-              module(Types.FiatTokenProxy.Blacklisted),
-              module(Types.FiatTokenProxy.BlacklisterChanged),
-              module(Types.FiatTokenProxy.Burn),
-              module(Types.FiatTokenProxy.MasterMinterChanged),
-              module(Types.FiatTokenProxy.Mint),
-              module(Types.FiatTokenProxy.MinterConfigured),
-              module(Types.FiatTokenProxy.MinterRemoved),
-              module(Types.FiatTokenProxy.OwnershipTransferred),
-              module(Types.FiatTokenProxy.Pause),
-              module(Types.FiatTokenProxy.PauserChanged),
-              module(Types.FiatTokenProxy.RescuerChanged),
-              module(Types.FiatTokenProxy.Transfer),
-              module(Types.FiatTokenProxy.UnBlacklisted),
-              module(Types.FiatTokenProxy.Unpause),
-              module(Types.FiatTokenProxy.Upgraded),
+              module(Types.DAKTokenMintERC20Token.Approval),
+              module(Types.DAKTokenMintERC20Token.Transfer),
+            ],
+          },
+          {
+            Config.name: "YAKITokenMintERC20Token",
+            abi: Types.YAKITokenMintERC20Token.abi,
+            addresses: [
+              "0xfe140e1dCe99Be9F4F15d657CD9b7BF622270C50"->Address.Evm.fromStringOrThrow
+,
+            ],
+            events: [
+              module(Types.YAKITokenMintERC20Token.Approval),
+              module(Types.YAKITokenMintERC20Token.Transfer),
+            ],
+          },
+          {
+            Config.name: "CHOGTokenMintERC20Token",
+            abi: Types.CHOGTokenMintERC20Token.abi,
+            addresses: [
+              "0xE0590015A873bF326bd645c3E1266d4db41C4E6B"->Address.Evm.fromStringOrThrow
+,
+            ],
+            events: [
+              module(Types.CHOGTokenMintERC20Token.Approval),
+              module(Types.CHOGTokenMintERC20Token.Transfer),
             ],
           },
         ]
-        let chain = ChainMap.Chain.makeUnsafe(~chainId=8453)
+        let chain = ChainMap.Chain.makeUnsafe(~chainId=10143)
         {
           Config.confirmedBlockThreshold: 200,
           syncSource: 
@@ -121,9 +90,12 @@ let registerContractHandlers = (
             HyperSyncSource.make({
               chain,
               contracts,
-              endpointUrl: "https://8453.hypersync.xyz",
+              endpointUrl: "https://10143.hypersync.xyz",
               allEventSignatures: [
-                Types.FiatTokenProxy.eventSignatures,
+                Types.WETHTokenMintERC20Token.eventSignatures,
+                Types.DAKTokenMintERC20Token.eventSignatures,
+                Types.YAKITokenMintERC20Token.eventSignatures,
+                Types.CHOGTokenMintERC20Token.eventSignatures,
               ]->Belt.Array.concatMany,
               eventRouter:
                 contracts
@@ -151,27 +123,14 @@ let registerContractHandlers = (
       ~chains,
       ~enableRawEvents=false,
       ~entities=[
-        module(Entities.FiatTokenProxy_AdminChanged),
-        module(Entities.FiatTokenProxy_Approval),
-        module(Entities.FiatTokenProxy_AuthorizationCanceled),
-        module(Entities.FiatTokenProxy_AuthorizationUsed),
-        module(Entities.FiatTokenProxy_Blacklisted),
-        module(Entities.FiatTokenProxy_BlacklisterChanged),
-        module(Entities.FiatTokenProxy_Burn),
-        module(Entities.FiatTokenProxy_MasterMinterChanged),
-        module(Entities.FiatTokenProxy_Mint),
-        module(Entities.FiatTokenProxy_MinterConfigured),
-        module(Entities.FiatTokenProxy_MinterRemoved),
-        module(Entities.FiatTokenProxy_OwnershipTransferred),
-        module(Entities.FiatTokenProxy_Pause),
-        module(Entities.FiatTokenProxy_PauserChanged),
-        module(Entities.FiatTokenProxy_RescuerChanged),
-        module(Entities.FiatTokenProxy_Transfer),
-        module(Entities.FiatTokenProxy_UnBlacklisted),
-        module(Entities.FiatTokenProxy_Unpause),
-        module(Entities.FiatTokenProxy_Upgraded),
-        module(Entities.TokenMintERC20Token_Approval),
-        module(Entities.TokenMintERC20Token_Transfer),
+        module(Entities.CHOGTokenMintERC20Token_Approval),
+        module(Entities.CHOGTokenMintERC20Token_Transfer),
+        module(Entities.DAKTokenMintERC20Token_Approval),
+        module(Entities.DAKTokenMintERC20Token_Transfer),
+        module(Entities.WETHTokenMintERC20Token_Approval),
+        module(Entities.WETHTokenMintERC20Token_Transfer),
+        module(Entities.YAKITokenMintERC20Token_Approval),
+        module(Entities.YAKITokenMintERC20Token_Transfer),
       ],
     )
   }
@@ -181,12 +140,22 @@ let registerContractHandlers = (
 
 let registerAllHandlers = () => {
   registerContractHandlers(
-    ~contractName="FiatTokenProxy",
+    ~contractName="CHOGTokenMintERC20Token",
     ~handlerPathRelativeToRoot="src/EventHandlers.ts",
     ~handlerPathRelativeToConfig="src/EventHandlers.ts",
   )
   registerContractHandlers(
-    ~contractName="TokenMintERC20Token",
+    ~contractName="DAKTokenMintERC20Token",
+    ~handlerPathRelativeToRoot="src/EventHandlers.ts",
+    ~handlerPathRelativeToConfig="src/EventHandlers.ts",
+  )
+  registerContractHandlers(
+    ~contractName="WETHTokenMintERC20Token",
+    ~handlerPathRelativeToRoot="src/EventHandlers.ts",
+    ~handlerPathRelativeToConfig="src/EventHandlers.ts",
+  )
+  registerContractHandlers(
+    ~contractName="YAKITokenMintERC20Token",
     ~handlerPathRelativeToRoot="src/EventHandlers.ts",
     ~handlerPathRelativeToConfig="src/EventHandlers.ts",
   )

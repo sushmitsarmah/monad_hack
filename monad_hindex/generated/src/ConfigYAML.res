@@ -33,74 +33,69 @@ let publicConfig = ChainMap.fromArrayUnsafe([
   {
     let contracts = Js.Dict.fromArray([
       (
-        "TokenMintERC20Token",
+        "WETHTokenMintERC20Token",
         {
-          name: "TokenMintERC20Token",
-          abi: Types.TokenMintERC20Token.abi,
+          name: "WETHTokenMintERC20Token",
+          abi: Types.WETHTokenMintERC20Token.abi,
           addresses: [
-            "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+            "0xB5a30b0FDc5EA94A52fDc42e3E9760Cb8449Fb37",
           ],
           events: [
-            Types.TokenMintERC20Token.Approval.name,
-            Types.TokenMintERC20Token.Transfer.name,
+            Types.WETHTokenMintERC20Token.Approval.name,
+            Types.WETHTokenMintERC20Token.Transfer.name,
           ],
         }
       ),
-    ])
-    let chain = ChainMap.Chain.makeUnsafe(~chainId=1)
-    (
-      chain,
-      {
-        confirmedBlockThreshold: 200,
-        syncSource: 
-          HyperSync({endpointUrl: "https://1.hypersync.xyz"})
-,
-        startBlock: 0,
-        contracts
-      }
-    )
-  },
-  {
-    let contracts = Js.Dict.fromArray([
       (
-        "FiatTokenProxy",
+        "DAKTokenMintERC20Token",
         {
-          name: "FiatTokenProxy",
-          abi: Types.FiatTokenProxy.abi,
+          name: "DAKTokenMintERC20Token",
+          abi: Types.DAKTokenMintERC20Token.abi,
           addresses: [
-            "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+            "0x0F0BDEbF0F83cD1EE3974779Bcb7315f9808c714",
           ],
           events: [
-            Types.FiatTokenProxy.AdminChanged.name,
-            Types.FiatTokenProxy.Approval.name,
-            Types.FiatTokenProxy.AuthorizationCanceled.name,
-            Types.FiatTokenProxy.AuthorizationUsed.name,
-            Types.FiatTokenProxy.Blacklisted.name,
-            Types.FiatTokenProxy.BlacklisterChanged.name,
-            Types.FiatTokenProxy.Burn.name,
-            Types.FiatTokenProxy.MasterMinterChanged.name,
-            Types.FiatTokenProxy.Mint.name,
-            Types.FiatTokenProxy.MinterConfigured.name,
-            Types.FiatTokenProxy.MinterRemoved.name,
-            Types.FiatTokenProxy.OwnershipTransferred.name,
-            Types.FiatTokenProxy.Pause.name,
-            Types.FiatTokenProxy.PauserChanged.name,
-            Types.FiatTokenProxy.RescuerChanged.name,
-            Types.FiatTokenProxy.Transfer.name,
-            Types.FiatTokenProxy.UnBlacklisted.name,
-            Types.FiatTokenProxy.Unpause.name,
-            Types.FiatTokenProxy.Upgraded.name,
+            Types.DAKTokenMintERC20Token.Approval.name,
+            Types.DAKTokenMintERC20Token.Transfer.name,
+          ],
+        }
+      ),
+      (
+        "YAKITokenMintERC20Token",
+        {
+          name: "YAKITokenMintERC20Token",
+          abi: Types.YAKITokenMintERC20Token.abi,
+          addresses: [
+            "0xfe140e1dCe99Be9F4F15d657CD9b7BF622270C50",
+          ],
+          events: [
+            Types.YAKITokenMintERC20Token.Approval.name,
+            Types.YAKITokenMintERC20Token.Transfer.name,
+          ],
+        }
+      ),
+      (
+        "CHOGTokenMintERC20Token",
+        {
+          name: "CHOGTokenMintERC20Token",
+          abi: Types.CHOGTokenMintERC20Token.abi,
+          addresses: [
+            "0xE0590015A873bF326bd645c3E1266d4db41C4E6B",
+          ],
+          events: [
+            Types.CHOGTokenMintERC20Token.Approval.name,
+            Types.CHOGTokenMintERC20Token.Transfer.name,
           ],
         }
       ),
     ])
-    let chain = ChainMap.Chain.makeUnsafe(~chainId=8453)
+    let chain = ChainMap.Chain.makeUnsafe(~chainId=10143)
     (
       chain,
       {
         confirmedBlockThreshold: 200,
         syncSource: 
-          HyperSync({endpointUrl: "https://8453.hypersync.xyz"})
+          HyperSync({endpointUrl: "https://10143.hypersync.xyz"})
 ,
         startBlock: 0,
         contracts

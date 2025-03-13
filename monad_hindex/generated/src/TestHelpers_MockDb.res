@@ -60,27 +60,14 @@ type rec t = {
 // Each user defined entity will be in this record with all the store or "mockdb" operators
 @genType
 and entities = {
-    @as("FiatTokenProxy_AdminChanged") fiatTokenProxy_AdminChanged: entityStoreOperations<Entities.FiatTokenProxy_AdminChanged.t>,
-    @as("FiatTokenProxy_Approval") fiatTokenProxy_Approval: entityStoreOperations<Entities.FiatTokenProxy_Approval.t>,
-    @as("FiatTokenProxy_AuthorizationCanceled") fiatTokenProxy_AuthorizationCanceled: entityStoreOperations<Entities.FiatTokenProxy_AuthorizationCanceled.t>,
-    @as("FiatTokenProxy_AuthorizationUsed") fiatTokenProxy_AuthorizationUsed: entityStoreOperations<Entities.FiatTokenProxy_AuthorizationUsed.t>,
-    @as("FiatTokenProxy_Blacklisted") fiatTokenProxy_Blacklisted: entityStoreOperations<Entities.FiatTokenProxy_Blacklisted.t>,
-    @as("FiatTokenProxy_BlacklisterChanged") fiatTokenProxy_BlacklisterChanged: entityStoreOperations<Entities.FiatTokenProxy_BlacklisterChanged.t>,
-    @as("FiatTokenProxy_Burn") fiatTokenProxy_Burn: entityStoreOperations<Entities.FiatTokenProxy_Burn.t>,
-    @as("FiatTokenProxy_MasterMinterChanged") fiatTokenProxy_MasterMinterChanged: entityStoreOperations<Entities.FiatTokenProxy_MasterMinterChanged.t>,
-    @as("FiatTokenProxy_Mint") fiatTokenProxy_Mint: entityStoreOperations<Entities.FiatTokenProxy_Mint.t>,
-    @as("FiatTokenProxy_MinterConfigured") fiatTokenProxy_MinterConfigured: entityStoreOperations<Entities.FiatTokenProxy_MinterConfigured.t>,
-    @as("FiatTokenProxy_MinterRemoved") fiatTokenProxy_MinterRemoved: entityStoreOperations<Entities.FiatTokenProxy_MinterRemoved.t>,
-    @as("FiatTokenProxy_OwnershipTransferred") fiatTokenProxy_OwnershipTransferred: entityStoreOperations<Entities.FiatTokenProxy_OwnershipTransferred.t>,
-    @as("FiatTokenProxy_Pause") fiatTokenProxy_Pause: entityStoreOperations<Entities.FiatTokenProxy_Pause.t>,
-    @as("FiatTokenProxy_PauserChanged") fiatTokenProxy_PauserChanged: entityStoreOperations<Entities.FiatTokenProxy_PauserChanged.t>,
-    @as("FiatTokenProxy_RescuerChanged") fiatTokenProxy_RescuerChanged: entityStoreOperations<Entities.FiatTokenProxy_RescuerChanged.t>,
-    @as("FiatTokenProxy_Transfer") fiatTokenProxy_Transfer: entityStoreOperations<Entities.FiatTokenProxy_Transfer.t>,
-    @as("FiatTokenProxy_UnBlacklisted") fiatTokenProxy_UnBlacklisted: entityStoreOperations<Entities.FiatTokenProxy_UnBlacklisted.t>,
-    @as("FiatTokenProxy_Unpause") fiatTokenProxy_Unpause: entityStoreOperations<Entities.FiatTokenProxy_Unpause.t>,
-    @as("FiatTokenProxy_Upgraded") fiatTokenProxy_Upgraded: entityStoreOperations<Entities.FiatTokenProxy_Upgraded.t>,
-    @as("TokenMintERC20Token_Approval") tokenMintERC20Token_Approval: entityStoreOperations<Entities.TokenMintERC20Token_Approval.t>,
-    @as("TokenMintERC20Token_Transfer") tokenMintERC20Token_Transfer: entityStoreOperations<Entities.TokenMintERC20Token_Transfer.t>,
+    @as("CHOGTokenMintERC20Token_Approval") cHOGTokenMintERC20Token_Approval: entityStoreOperations<Entities.CHOGTokenMintERC20Token_Approval.t>,
+    @as("CHOGTokenMintERC20Token_Transfer") cHOGTokenMintERC20Token_Transfer: entityStoreOperations<Entities.CHOGTokenMintERC20Token_Transfer.t>,
+    @as("DAKTokenMintERC20Token_Approval") dAKTokenMintERC20Token_Approval: entityStoreOperations<Entities.DAKTokenMintERC20Token_Approval.t>,
+    @as("DAKTokenMintERC20Token_Transfer") dAKTokenMintERC20Token_Transfer: entityStoreOperations<Entities.DAKTokenMintERC20Token_Transfer.t>,
+    @as("WETHTokenMintERC20Token_Approval") wETHTokenMintERC20Token_Approval: entityStoreOperations<Entities.WETHTokenMintERC20Token_Approval.t>,
+    @as("WETHTokenMintERC20Token_Transfer") wETHTokenMintERC20Token_Transfer: entityStoreOperations<Entities.WETHTokenMintERC20Token_Transfer.t>,
+    @as("YAKITokenMintERC20Token_Approval") yAKITokenMintERC20Token_Approval: entityStoreOperations<Entities.YAKITokenMintERC20Token_Approval.t>,
+    @as("YAKITokenMintERC20Token_Transfer") yAKITokenMintERC20Token_Transfer: entityStoreOperations<Entities.YAKITokenMintERC20Token_Transfer.t>,
   }
 // User defined entities always have a string for an id which is used as the
 // key for entity stores
@@ -251,171 +238,67 @@ let rec makeWithInMemoryStore: InMemoryStore.t => t = (inMemoryStore: InMemorySt
   )
 
   let entities = {
-      fiatTokenProxy_AdminChanged: {
+      cHOGTokenMintERC20Token_Approval: {
         makeStoreOperatorEntity(
           ~inMemoryStore,
           ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_AdminChanged)),
+          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.CHOGTokenMintERC20Token_Approval)),
           ~getKey=({id}) => id,
         )
       },
-      fiatTokenProxy_Approval: {
+      cHOGTokenMintERC20Token_Transfer: {
         makeStoreOperatorEntity(
           ~inMemoryStore,
           ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_Approval)),
+          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.CHOGTokenMintERC20Token_Transfer)),
           ~getKey=({id}) => id,
         )
       },
-      fiatTokenProxy_AuthorizationCanceled: {
+      dAKTokenMintERC20Token_Approval: {
         makeStoreOperatorEntity(
           ~inMemoryStore,
           ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_AuthorizationCanceled)),
+          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.DAKTokenMintERC20Token_Approval)),
           ~getKey=({id}) => id,
         )
       },
-      fiatTokenProxy_AuthorizationUsed: {
+      dAKTokenMintERC20Token_Transfer: {
         makeStoreOperatorEntity(
           ~inMemoryStore,
           ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_AuthorizationUsed)),
+          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.DAKTokenMintERC20Token_Transfer)),
           ~getKey=({id}) => id,
         )
       },
-      fiatTokenProxy_Blacklisted: {
+      wETHTokenMintERC20Token_Approval: {
         makeStoreOperatorEntity(
           ~inMemoryStore,
           ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_Blacklisted)),
+          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.WETHTokenMintERC20Token_Approval)),
           ~getKey=({id}) => id,
         )
       },
-      fiatTokenProxy_BlacklisterChanged: {
+      wETHTokenMintERC20Token_Transfer: {
         makeStoreOperatorEntity(
           ~inMemoryStore,
           ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_BlacklisterChanged)),
+          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.WETHTokenMintERC20Token_Transfer)),
           ~getKey=({id}) => id,
         )
       },
-      fiatTokenProxy_Burn: {
+      yAKITokenMintERC20Token_Approval: {
         makeStoreOperatorEntity(
           ~inMemoryStore,
           ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_Burn)),
+          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.YAKITokenMintERC20Token_Approval)),
           ~getKey=({id}) => id,
         )
       },
-      fiatTokenProxy_MasterMinterChanged: {
+      yAKITokenMintERC20Token_Transfer: {
         makeStoreOperatorEntity(
           ~inMemoryStore,
           ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_MasterMinterChanged)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_Mint: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_Mint)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_MinterConfigured: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_MinterConfigured)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_MinterRemoved: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_MinterRemoved)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_OwnershipTransferred: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_OwnershipTransferred)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_Pause: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_Pause)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_PauserChanged: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_PauserChanged)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_RescuerChanged: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_RescuerChanged)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_Transfer: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_Transfer)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_UnBlacklisted: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_UnBlacklisted)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_Unpause: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_Unpause)),
-          ~getKey=({id}) => id,
-        )
-      },
-      fiatTokenProxy_Upgraded: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.FiatTokenProxy_Upgraded)),
-          ~getKey=({id}) => id,
-        )
-      },
-      tokenMintERC20Token_Approval: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.TokenMintERC20Token_Approval)),
-          ~getKey=({id}) => id,
-        )
-      },
-      tokenMintERC20Token_Transfer: {
-        makeStoreOperatorEntity(
-          ~inMemoryStore,
-          ~makeMockDb=makeWithInMemoryStore,
-          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.TokenMintERC20Token_Transfer)),
+          ~getStore=db => db.entities->InMemoryStore.EntityTables.get(module(Entities.YAKITokenMintERC20Token_Transfer)),
           ~getKey=({id}) => id,
         )
       },
@@ -564,107 +447,42 @@ let writeFromMemoryStore = (mockDb: t, ~inMemoryStore: InMemoryStore.t) => {
 //ENTITY EXECUTION
   mockDb->executeRowsEntity(
     ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_AdminChanged),
+    ~entityMod=module(Entities.CHOGTokenMintERC20Token_Approval),
     ~getKey=entity => entity.id,
   )
   mockDb->executeRowsEntity(
     ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_Approval),
+    ~entityMod=module(Entities.CHOGTokenMintERC20Token_Transfer),
     ~getKey=entity => entity.id,
   )
   mockDb->executeRowsEntity(
     ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_AuthorizationCanceled),
+    ~entityMod=module(Entities.DAKTokenMintERC20Token_Approval),
     ~getKey=entity => entity.id,
   )
   mockDb->executeRowsEntity(
     ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_AuthorizationUsed),
+    ~entityMod=module(Entities.DAKTokenMintERC20Token_Transfer),
     ~getKey=entity => entity.id,
   )
   mockDb->executeRowsEntity(
     ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_Blacklisted),
+    ~entityMod=module(Entities.WETHTokenMintERC20Token_Approval),
     ~getKey=entity => entity.id,
   )
   mockDb->executeRowsEntity(
     ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_BlacklisterChanged),
+    ~entityMod=module(Entities.WETHTokenMintERC20Token_Transfer),
     ~getKey=entity => entity.id,
   )
   mockDb->executeRowsEntity(
     ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_Burn),
+    ~entityMod=module(Entities.YAKITokenMintERC20Token_Approval),
     ~getKey=entity => entity.id,
   )
   mockDb->executeRowsEntity(
     ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_MasterMinterChanged),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_Mint),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_MinterConfigured),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_MinterRemoved),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_OwnershipTransferred),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_Pause),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_PauserChanged),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_RescuerChanged),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_Transfer),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_UnBlacklisted),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_Unpause),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.FiatTokenProxy_Upgraded),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.TokenMintERC20Token_Approval),
-    ~getKey=entity => entity.id,
-  )
-  mockDb->executeRowsEntity(
-    ~inMemoryStore,
-    ~entityMod=module(Entities.TokenMintERC20Token_Transfer),
+    ~entityMod=module(Entities.YAKITokenMintERC20Token_Transfer),
     ~getKey=entity => entity.id,
   )
 }
