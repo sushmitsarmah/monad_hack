@@ -21,6 +21,7 @@ import {
 // import { HINDEX_DATA } from './sample'
 
 import { getTokenApprovals } from '@/services'
+import Link from 'next/link'
 
 // Define types for the data structure
 interface TokenApproval {
@@ -67,6 +68,7 @@ interface OwnerDataItem {
 
 const TokenApprovalsDashboard: React.FC = () => {
   const [data, setData] = useState<DataStructure>()
+  const [walletId, setWalletId] = useState<string>('')
 
   useEffect(() => {
     getTokenApprovals(10).then((data) => {
@@ -175,7 +177,22 @@ const TokenApprovalsDashboard: React.FC = () => {
 
   return (
     <div className='p-4'>
-      <h1 className='text-2xl font-bold mb-6'>ERC20 Token Approvals Dashboard</h1>
+      <div>
+        <h1 className='text-2xl font-bold mb-6'>ERC20 Token Approvals Dashboard</h1>
+        <div className='mb-6 flex gap-2'>
+          <input
+            onChange={(e) => setWalletId(e.target.value)}
+            type='text'
+            placeholder='Enter wallet address'
+            className='flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500'
+          />
+          <Link
+            href={`/wallet/${walletId}`}
+            className='px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-300'>
+            HyperSync Search
+          </Link>
+        </div>
+      </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
         {/* Token Distribution Chart */}
