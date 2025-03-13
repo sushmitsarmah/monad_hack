@@ -16,7 +16,7 @@ const LandingPage = () => {
           src='/background.jpeg' // Replace with your image path
           alt='Background'
           fill
-          style={{ objectFit: 'cover', opacity: 0.5 }} // Or 'contain' if you prefer
+          style={{ objectFit: 'cover', opacity: 0.3 }} // Or 'contain' if you prefer
         />
       </div>
 
@@ -42,7 +42,7 @@ const LandingPage = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
-          className='text-5xl font-bold text-indigo-500'>
+          className='text-5xl font-bold text-blue-200'>
           TokenScope
         </motion.h1>
         <motion.p

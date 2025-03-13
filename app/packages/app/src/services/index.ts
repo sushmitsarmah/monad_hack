@@ -36,8 +36,8 @@ export const getVolumes = async (addresses: string[]) => {
   return response.json()
 }
 
-export const getTokenApprovals = async (limit = 50) => {
-  const query = `
+export const getTokenApprovals = async (limit = 50, token?: string) => {
+  let query = `
       query TokenApprovals {
         CHOGTokenMintERC20Token_Approval(limit: ${limit}) {
           id
@@ -66,6 +66,19 @@ export const getTokenApprovals = async (limit = 50) => {
       }
     `
 
+  if (token) {
+    query = `
+      query TokenApprovals {
+        ${token.toUpperCase()}TokenMintERC20Token_Approval(limit: ${limit}) {
+          id
+          owner
+          spender
+          value
+        }
+      }
+    `
+  }
+
   const response = await fetch(HINDEX_GRAPHQL_URL, {
     method: 'POST',
     headers: {
@@ -82,8 +95,8 @@ export const getTokenApprovals = async (limit = 50) => {
   return response.json()
 }
 
-export const getTokenTransfers = async (limit = 50) => {
-  const query = `
+export const getTokenTransfers = async (limit = 50, token?: string) => {
+  let query = `
       query TokenTransfers {
         CHOGTokenMintERC20Token_Transfer(limit: ${limit}) {
           id
@@ -111,6 +124,19 @@ export const getTokenTransfers = async (limit = 50) => {
         }
       }
     `
+
+  if (token) {
+    query = `
+      query TokenTransfers {
+        ${token.toUpperCase()}TokenMintERC20Token_Transfer(limit: ${limit}) {
+          id
+          from
+          to
+          value
+        }
+      }
+    `
+  }
 
   const response = await fetch(HINDEX_GRAPHQL_URL, {
     method: 'POST',

@@ -66,15 +66,25 @@ interface OwnerDataItem {
   tokenCount: number
 }
 
-const TokenApprovalsDashboard: React.FC = () => {
+interface Props {
+  token?: string
+}
+
+const TokenApprovalsDashboard: React.FC<Props> = ({ token }) => {
   const [data, setData] = useState<DataStructure>()
   const [walletId, setWalletId] = useState<string>('')
 
   useEffect(() => {
-    getTokenApprovals(10).then((data) => {
-      setData(data)
-    })
-  }, [])
+    if (token) {
+      getTokenApprovals(10, token).then((data) => {
+        setData(data)
+      })
+    } else {
+      getTokenApprovals(10).then((data) => {
+        setData(data)
+      })
+    }
+  }, [token])
 
   // Process data for token distribution chart
   const tokenDistribution: TokenDistributionItem[] = Object.keys(data?.data || {}).map((token) => {
@@ -196,7 +206,7 @@ const TokenApprovalsDashboard: React.FC = () => {
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
         {/* Token Distribution Chart */}
-        <div className='bg-white p-4 rounded shadow'>
+        <div className='bg-transparent p-4 rounded shadow'>
           <h2 className='text-lg font-semibold mb-4'>Token Approval Distribution</h2>
           <ResponsiveContainer width='100%' height={300}>
             <BarChart data={tokenDistribution}>
@@ -211,7 +221,7 @@ const TokenApprovalsDashboard: React.FC = () => {
         </div>
 
         {/* Value Distribution */}
-        <div className='bg-white p-4 rounded shadow'>
+        <div className='bg-transparent p-4 rounded shadow'>
           <h2 className='text-lg font-semibold mb-4'>Total Value by Token (ETH equivalent)</h2>
           <ResponsiveContainer width='100%' height={300}>
             <PieChart>
@@ -237,7 +247,7 @@ const TokenApprovalsDashboard: React.FC = () => {
         </div>
 
         {/* Top Spenders */}
-        <div className='bg-white p-4 rounded shadow'>
+        <div className='bg-transparent p-4 rounded shadow'>
           <h2 className='text-lg font-semibold mb-4'>Top Spenders by Approval Count</h2>
           <ResponsiveContainer width='100%' height={300}>
             <BarChart data={topSpenders} layout='vertical'>
@@ -252,7 +262,7 @@ const TokenApprovalsDashboard: React.FC = () => {
         </div>
 
         {/* Owner Activity */}
-        <div className='bg-white p-4 rounded shadow'>
+        <div className='bg-transparent p-4 rounded shadow'>
           <h2 className='text-lg font-semibold mb-4'>Owner Activity Analysis</h2>
           <ResponsiveContainer width='100%' height={300}>
             <ScatterChart>

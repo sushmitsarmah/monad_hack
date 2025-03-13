@@ -20,6 +20,7 @@ import {
 } from 'recharts'
 
 import { getWalletTransactions } from '@/services'
+import Link from 'next/link'
 
 // Define types for transaction data
 interface Transaction {
@@ -228,15 +229,15 @@ const WalletTransactionsDashboard: React.FC<Props> = ({ walletId }) => {
 
       {/* Summary Cards */}
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-6'>
-        <div className='bg-white shadow-md rounded-lg p-4'>
+        <div className='bg-transparent shadow-md rounded-lg p-4'>
           <h2 className='text-lg font-semibold'>Total Incoming</h2>
           <p className='text-xl'>{walletSummary.totalIncoming.toFixed(2)} ETH</p>
         </div>
-        <div className='bg-white shadow-md rounded-lg p-4'>
+        <div className='bg-transparent shadow-md rounded-lg p-4'>
           <h2 className='text-lg font-semibold'>Total Outgoing</h2>
           <p className='text-xl'>{walletSummary.totalOutgoing.toFixed(2)} ETH</p>
         </div>
-        <div className='bg-white shadow-md rounded-lg p-4'>
+        <div className='bg-transparent shadow-md rounded-lg p-4'>
           <h2 className='text-lg font-semibold'>Net Balance</h2>
           <p className='text-xl'>{walletSummary.netBalance.toFixed(2)} ETH</p>
         </div>
@@ -267,8 +268,10 @@ const WalletTransactionsDashboard: React.FC<Props> = ({ walletId }) => {
         <ul>
           {getTopAddresses().map((addressActivity, index) => (
             <li key={index} className='mb-2'>
-              <span className='font-mono'>{formatAddress(addressActivity.address)}</span>:
-              <span className='ml-2'>Incoming: {addressActivity.incoming.toFixed(2)} ETH,</span>
+              <Link className='font-mono' href={`/wallet/${addressActivity.address}`}>
+                {addressActivity.address}
+              </Link>
+              :<span className='ml-2'>Incoming: {addressActivity.incoming.toFixed(2)} ETH,</span>
               <span className='ml-2'>Outgoing: {addressActivity.outgoing.toFixed(2)} ETH,</span>
               <span className='ml-2'>Transactions: {addressActivity.txCount}</span>
             </li>
